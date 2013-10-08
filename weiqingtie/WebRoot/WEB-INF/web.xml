@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="2.5"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" >
+
+    <servlet>
+        <servlet-name>webControllerServlet</servlet-name>
+        <servlet-class>com.wqt.web.servlet.WebControllerServlet</servlet-class>
+        
+        <!-- default area -->
+		<init-param>
+			<param-name>defaultPage</param-name>
+			<param-value>/jsp/home/home.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>defaultCommand</param-name>
+			<param-value>com.wqt.web.command.HomeCommand</param-value>
+		</init-param>
+		
+		<!-- home area -->
+		<init-param>
+			<param-name>homePage</param-name>
+			<param-value>/jsp/home/home.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>homeCommand</param-name>
+			<param-value>com.wqt.web.command.HomeCommand</param-value>
+		</init-param>
+		
+		<!-- user area -->
+		<init-param>
+			<param-name>loginPage</param-name>
+			<param-value>/jsp/user/login.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>loginSuccessPage</param-name>
+			<param-value>/jsp/home/home.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>loginFailPage</param-name>
+			<param-value>/jsp/user/login.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>loginCommand</param-name>
+			<param-value>com.wqt.web.command.LoginCommand</param-value>
+		</init-param>
+		<init-param>
+			<!-- default is true -->
+			<param-name>loginNeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>logoutPage</param-name>
+			<param-value>/jsp/user/login.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>logoutCommand</param-name>
+			<param-value>com.wqt.web.command.logoutCommand</param-value>
+		</init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>webControllerServlet</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>webControllerServlet</servlet-name>
+        <url-pattern>*.rmt</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>welcome.htm</welcome-file>
+    </welcome-file-list>
+
+</web-app>
