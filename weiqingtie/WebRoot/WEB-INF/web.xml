@@ -30,6 +30,7 @@
 		</init-param>
 		
 		<!-- user area -->
+		<!-- login -->
 		<init-param>
 			<param-name>loginPage</param-name>
 			<param-value>/jsp/user/login.jsp</param-value>
@@ -52,6 +53,7 @@
 			<param-value>false</param-value>
 		</init-param>
 		
+		<!-- logout -->
 		<init-param>
 			<param-name>logoutPage</param-name>
 			<param-value>/jsp/user/login.jsp</param-value>
@@ -60,6 +62,27 @@
 			<param-name>logoutCommand</param-name>
 			<param-value>com.wqt.web.command.logoutCommand</param-value>
 		</init-param>
+		
+		<!-- edit wedding card -->
+		<init-param>
+			<param-name>edit_cardPage</param-name>
+			<param-value>/jsp/card/editWeddingCard.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>edit_cardCommand</param-name>
+			<param-value>com.wqt.web.command.EditWeddingCardCommand</param-value>
+		</init-param>
+		
+		<!-- delete wedding card -->
+		<init-param>
+			<param-name>delete_cardPage</param-name>
+			<param-value>/jsp/home/home.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>delete_cardCommand</param-name>
+			<param-value>com.wqt.web.command.DeleteCardCommand</param-value>
+		</init-param>
+		
     </servlet>
 
     <servlet-mapping>

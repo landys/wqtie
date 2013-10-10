@@ -19,16 +19,15 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 	public WeddingCardDao() throws AppException {
 		super();
 	}
-	
-	public List<WeddingCard> findWeddingCardsByUserId(final long userId) throws AppException {
+
+	public List<WeddingCard> findWeddingCardsByUserId(final long userId)
+			throws AppException {
 		String sql = dbProps.getProperty("WeddingCardFindAllByUserId");
 		List<Object> paras = new ArrayList<Object>();
 		paras.add(userId);
 
 		List<WeddingCard> cards = execFindObjects(sql, paras);
-		
-		
-		
+
 		return cards;
 	}
 
@@ -52,10 +51,10 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 				rs.getDate("createDate"), rs.getString("groom"),
 				rs.getString("bride"), rs.getString("title"),
 				rs.getDate("weddingDate"), rs.getString("weddingDateDesc"),
-				rs.getString("phone"), rs.getString("note"), new User(
-						rs.getLong("userId")),
-				new Place(rs.getLong("placeId")), new Agent(
-						rs.getLong("agentId")), new Asset(
+				rs.getString("phone"), rs.getString("note"),
+				rs.getInt("status"), new User(rs.getLong("userId")), new Place(
+						rs.getLong("placeId")),
+				new Agent(rs.getLong("agentId")), new Asset(
 						rs.getLong("templateId")), new Asset(
 						rs.getLong("musicId")), null, null, null);
 
@@ -74,6 +73,7 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 		paras.add(t.getWeddingDateDesc());
 		paras.add(t.getPhone());
 		paras.add(t.getNote());
+		paras.add(t.getStatus());
 		paras.add(t.getPlace().getPlaceId());
 		paras.add(t.getAgent().getAgentId());
 		paras.add(t.getTemplate().getAssetId());

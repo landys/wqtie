@@ -1,7 +1,7 @@
 package com.wqt.model;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Jinde
@@ -18,19 +18,19 @@ public class User extends BaseObject {
 
 	private Date createDate;
 
-	private ArrayList<WeddingCard> weddingCards;
+	private List<WeddingCard> weddingCards;
 
 	public User() {
 		super();
 	}
-	
+
 	public User(long userId) {
 		super();
 		this.userId = userId;
 	}
 
 	public User(long userId, String userName, String userPwd, int priviledge,
-			Date createDate, ArrayList<WeddingCard> weddingCards) {
+			Date createDate, List<WeddingCard> weddingCards) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -80,11 +80,11 @@ public class User extends BaseObject {
 		this.createDate = createDate;
 	}
 
-	public ArrayList<WeddingCard> getWeddingCards() {
+	public List<WeddingCard> getWeddingCards() {
 		return weddingCards;
 	}
 
-	public void setWeddingCards(ArrayList<WeddingCard> weddingCards) {
+	public void setWeddingCards(List<WeddingCard> weddingCards) {
 		this.weddingCards = weddingCards;
 	}
 

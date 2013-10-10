@@ -15,6 +15,8 @@ import com.wqt.util.PropertiesManager;
  * It's perfect for the table in database with a single auto-incremented id. For
  * others, you may need to override more methods.
  * 
+ * Thread safe.
+ * 
  * @author Jinde
  * @since 2013-10-7
  * 

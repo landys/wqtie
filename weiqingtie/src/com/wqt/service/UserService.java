@@ -11,6 +11,17 @@ import com.wqt.util.AppUtils;
  * 
  */
 public class UserService {
+	private UserDao userDao;
+
+	public UserService() {
+		super();
+		try {
+			userDao = new UserDao();
+		}
+		catch (AppException e) {
+			// do nothing
+		}
+	}
 
 	public User validateUser(String userName, String password) {
 		User user = null;
@@ -21,8 +32,6 @@ public class UserService {
 			password = password.trim();
 
 			try {
-				UserDao userDao = new UserDao();
-
 				user = userDao.findByUserName(userName);
 				if (!password.equals(user.getUserPwd())) {
 					user = null;

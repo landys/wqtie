@@ -25,6 +25,8 @@ public class WeddingCard extends BaseObject {
 	private String phone;
 
 	private String note;
+	
+	private int status;
 
 	private User user;
 
@@ -53,7 +55,7 @@ public class WeddingCard extends BaseObject {
 
 	public WeddingCard(long cardId, Date createDate, String groom,
 			String bride, String title, Date weddingDate,
-			String weddingDateDesc, String phone, String note, User user,
+			String weddingDateDesc, String phone, String note, int status, User user,
 			Place place, Agent agent, Asset template, Asset music,
 			ArrayList<Asset> videos, ArrayList<Asset> photos,
 			ArrayList<Feedback> feedbacks) {
@@ -67,6 +69,7 @@ public class WeddingCard extends BaseObject {
 		this.weddingDateDesc = weddingDateDesc;
 		this.phone = phone;
 		this.note = note;
+		this.status = status;
 		this.user = user;
 		this.place = place;
 		this.agent = agent;
@@ -211,6 +214,14 @@ public class WeddingCard extends BaseObject {
 
 	public void setFeedbacks(ArrayList<Feedback> feedbacks) {
 		this.feedbacks = feedbacks;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 }

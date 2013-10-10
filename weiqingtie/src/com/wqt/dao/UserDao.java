@@ -26,7 +26,9 @@ public class UserDao extends AbstractBaseDao<User> {
 		List<Object> paras = new ArrayList<Object>();
 		paras.add(userName);
 
-		return execFindObject(sql, paras);
+		User user = execFindObject(sql, paras);
+		
+		return user;
 	}
 
 	@Override

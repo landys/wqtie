@@ -83,7 +83,7 @@ public class WebControllerServlet extends HttpServlet {
 		}
 
 		// Authorization management
-		if (request.getSession().getAttribute("loginUserId") == null) {
+		if (request.getSession().getAttribute("loginUser") == null) {
 			// Not login
 			String strAuth = initProps
 					.getProperty(action + "NeedAuthorization");
@@ -125,6 +125,12 @@ public class WebControllerServlet extends HttpServlet {
 				result = (String) request.getAttribute("executeResult");
 			}
 			String strPage = initProps.getProperty(action + result + "Page");
+			
+			if (strPage == null) {
+				// use default one
+				strPage = initProps.getProperty(action + "Page");
+			}
+			
 			if (strPage != null) {
 				RequestDispatcher dispatcher = getServletContext()
 						.getRequestDispatcher(strPage);

@@ -53,6 +53,7 @@ create table `tbl_wedding_card` (
 `agentId` int(10) unsigned,
 `templateId` int(10) unsigned,
 `musicId` int(10) unsigned,
+`status` int(10) unsigned,
 PRIMARY KEY using btree (`cardId`),
 CONSTRAINT `FK_tbl_wedding_card_tbl_user_userId` FOREIGN KEY (`userId`) REFERENCES `tbl_user` (`userId`),
 CONSTRAINT `FK_tbl_wedding_card_tbl_place_placeId` FOREIGN KEY (`placeId`) REFERENCES `tbl_place` (`placeId`),

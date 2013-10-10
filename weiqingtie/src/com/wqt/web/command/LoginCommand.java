@@ -18,6 +18,8 @@ import com.wqt.util.AppUtils;
  * 
  */
 public class LoginCommand implements ICommand {
+	private UserService userService = new UserService();
+
 	private static final Logger LOG = Logger.getLogger(LoginCommand.class);
 
 	/*
@@ -29,8 +31,6 @@ public class LoginCommand implements ICommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		LOG.debug("Enter LoginCommand.execute.");
-
-		UserService userService = new UserService();
 
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
@@ -44,8 +44,7 @@ public class LoginCommand implements ICommand {
 		if (user != null) {
 			CommandHelp.setExecuteResult(request, CommandHelp.SuccessResult,
 					null, null);
-			CommandHelp.setLoginSession(request.getSession(), user.getUserId(),
-					user.getUserName());
+			CommandHelp.setLoginSession(request.getSession(), user);
 		}
 		else {
 			CommandHelp.setExecuteResult(request, CommandHelp.FailResult, null,
