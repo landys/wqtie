@@ -40,6 +40,11 @@ public class AgentDao extends AbstractBaseDao<Agent> {
 	}
 
 	@Override
+	protected void setId(Agent t, long id) {
+		t.setAgentId(id);
+	}
+
+	@Override
 	protected String getSqlPropPrefix() {
 		return SqlPropPrefix;
 	}

@@ -15,7 +15,7 @@ public class CardAsset extends BaseObject {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CardAsset(long cardId, long assetId) {
+	public CardAsset(final long cardId, final long assetId) {
 		super();
 		this.cardId = cardId;
 		this.assetId = assetId;

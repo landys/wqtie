@@ -37,6 +37,11 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 	}
 
 	@Override
+	protected void setId(WeddingCard t, long id) {
+		t.setCardId(id);
+	}
+
+	@Override
 	protected String getSqlPropPrefix() {
 		return SqlPropPrefix;
 	}
@@ -52,11 +57,12 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 				rs.getString("bride"), rs.getString("title"),
 				rs.getDate("weddingDate"), rs.getString("weddingDateDesc"),
 				rs.getString("phone"), rs.getString("note"),
+				rs.getString("story"), rs.getString("video"),
 				rs.getInt("status"), new User(rs.getLong("userId")), new Place(
 						rs.getLong("placeId")),
 				new Agent(rs.getLong("agentId")), new Asset(
 						rs.getLong("templateId")), new Asset(
-						rs.getLong("musicId")), null, null, null);
+						rs.getLong("musicId")), null, null);
 
 		return t;
 	}
@@ -64,7 +70,7 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 	@Override
 	protected List<Object> convertToParaListWithoutId(WeddingCard t) {
 		List<Object> paras = new ArrayList<Object>();
-		paras.add(t.getUser().getUserId());
+		paras.add(t.getUser() != null ? t.getUser().getUserId() : null);
 		paras.add(t.getCreateDate());
 		paras.add(t.getGroom());
 		paras.add(t.getBride());
@@ -73,11 +79,13 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 		paras.add(t.getWeddingDateDesc());
 		paras.add(t.getPhone());
 		paras.add(t.getNote());
+		paras.add(t.getStory());
+		paras.add(t.getVideo());
 		paras.add(t.getStatus());
-		paras.add(t.getPlace().getPlaceId());
-		paras.add(t.getAgent().getAgentId());
-		paras.add(t.getTemplate().getAssetId());
-		paras.add(t.getMusic().getAssetId());
+		paras.add(t.getPlace() != null ? t.getPlace().getPlaceId() : null);
+		paras.add(t.getAgent() != null ? t.getAgent().getAgentId() : null);
+		paras.add(t.getTemplate() != null ? t.getTemplate().getAssetId() : null);
+		paras.add(t.getMusic() != null ? t.getMusic().getAssetId() : null);
 
 		return paras;
 	}

@@ -16,7 +16,7 @@ public class CommandHelp {
 	public static final String FailResult = "Fail";
 	public static final String InitialResult = "";
 
-	public static void setExecuteResult(HttpServletRequest request,
+	public static void setExecuteResult(final HttpServletRequest request,
 			final String result, final String message, final String errorMessage) {
 		request.setAttribute("executeResult", result);
 		request.setAttribute("message", message);
@@ -26,6 +26,16 @@ public class CommandHelp {
 	public static void setLoginSession(final HttpSession session,
 			final User user) {
 		session.setAttribute("loginUser", user);
+	}
+
+	public static void setErrorMessage(final HttpServletRequest request,
+			final String errorMessage) {
+		request.setAttribute("errorMessage", errorMessage);
+	}
+
+	public static void setMessage(final HttpServletRequest request,
+			final String message) {
+		request.setAttribute("message", message);
 	}
 
 	public static void removeLoginSession(final HttpSession session) {

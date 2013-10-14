@@ -89,6 +89,8 @@ public class WebControllerServlet extends HttpServlet {
 					.getProperty(action + "NeedAuthorization");
 			if (!"false".equalsIgnoreCase(strAuth)) {
 				action = "login";
+				response.sendRedirect(action + ".html");
+				return;
 			}
 		}
 
@@ -118,7 +120,7 @@ public class WebControllerServlet extends HttpServlet {
 
 		}
 
-		if (actionType == 1) {
+		if (actionType == 1) {		
 			// Forword to the right page
 			String result = "";
 			if (request.getAttribute("executeResult") != null) {
@@ -132,9 +134,14 @@ public class WebControllerServlet extends HttpServlet {
 			}
 			
 			if (strPage != null) {
-				RequestDispatcher dispatcher = getServletContext()
-						.getRequestDispatcher(strPage);
-				dispatcher.forward(request, response);
+				if (strPage.endsWith("html")) {
+					response.sendRedirect(strPage);
+				}
+				else {
+					RequestDispatcher dispatcher = getServletContext()
+							.getRequestDispatcher(strPage);
+					dispatcher.forward(request, response);
+				}
 			}
 		}
 		else if (actionType == 2) {

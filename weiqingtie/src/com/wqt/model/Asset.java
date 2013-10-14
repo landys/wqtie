@@ -22,7 +22,7 @@ public class Asset extends BaseObject {
 	private User user;
 
 	public Asset() {
-		// TODO Auto-generated constructor stub
+		this.assetId = -1;
 	}
 
 	public Asset(long assetId) {

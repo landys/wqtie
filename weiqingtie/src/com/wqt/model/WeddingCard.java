@@ -25,7 +25,9 @@ public class WeddingCard extends BaseObject {
 	private String phone;
 
 	private String note;
-	
+
+	private String story;
+
 	private int status;
 
 	private User user;
@@ -38,7 +40,7 @@ public class WeddingCard extends BaseObject {
 
 	private Asset music;
 
-	private ArrayList<Asset> videos;
+	private String video;
 
 	private ArrayList<Asset> photos;
 
@@ -46,8 +48,10 @@ public class WeddingCard extends BaseObject {
 
 	public WeddingCard() {
 		super();
+
+		this.cardId = -1;
 	}
-	
+
 	public WeddingCard(long cardId) {
 		super();
 		this.cardId = cardId;
@@ -55,9 +59,9 @@ public class WeddingCard extends BaseObject {
 
 	public WeddingCard(long cardId, Date createDate, String groom,
 			String bride, String title, Date weddingDate,
-			String weddingDateDesc, String phone, String note, int status, User user,
-			Place place, Agent agent, Asset template, Asset music,
-			ArrayList<Asset> videos, ArrayList<Asset> photos,
+			String weddingDateDesc, String phone, String note, String story,
+			String video, int status, User user, Place place, Agent agent,
+			Asset template, Asset music, ArrayList<Asset> photos,
 			ArrayList<Feedback> feedbacks) {
 		super();
 		this.cardId = cardId;
@@ -69,13 +73,15 @@ public class WeddingCard extends BaseObject {
 		this.weddingDateDesc = weddingDateDesc;
 		this.phone = phone;
 		this.note = note;
+		this.story = story;
+		this.video = video;
 		this.status = status;
 		this.user = user;
 		this.place = place;
 		this.agent = agent;
 		this.template = template;
 		this.music = music;
-		this.videos = videos;
+		this.video = video;
 		this.photos = photos;
 		this.feedbacks = feedbacks;
 	}
@@ -192,12 +198,12 @@ public class WeddingCard extends BaseObject {
 		this.music = music;
 	}
 
-	public ArrayList<Asset> getVideos() {
-		return videos;
+	public String getVideo() {
+		return video;
 	}
 
-	public void setVideos(ArrayList<Asset> videos) {
-		this.videos = videos;
+	public void setVideo(String video) {
+		this.video = video;
 	}
 
 	public ArrayList<Asset> getPhotos() {
@@ -222,6 +228,14 @@ public class WeddingCard extends BaseObject {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public String getStory() {
+		return story;
+	}
+
+	public void setStory(String story) {
+		this.story = story;
 	}
 
 }

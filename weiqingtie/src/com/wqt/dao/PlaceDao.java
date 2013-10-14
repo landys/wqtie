@@ -15,7 +15,7 @@ public class PlaceDao extends AbstractBaseDao<Place> {
 	public PlaceDao() throws AppException {
 		super();
 	}
-	
+
 	public List<Place> findPlacesInIds(List<Long> placeIds) throws AppException {
 		String namePlace = "?";
 		int n = placeIds.size();
@@ -37,6 +37,11 @@ public class PlaceDao extends AbstractBaseDao<Place> {
 	@Override
 	protected long getId(Place t) {
 		return t.getPlaceId();
+	}
+
+	@Override
+	protected void setId(Place t, long id) {
+		t.setPlaceId(id);
 	}
 
 	@Override

@@ -21,6 +21,7 @@ public class Place extends BaseObject {
 
 	public Place() {
 		super();
+		this.placeId = -1;
 	}
 
 	public Place(long placeId) {

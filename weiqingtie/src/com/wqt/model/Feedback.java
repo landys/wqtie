@@ -22,7 +22,9 @@ public class Feedback extends BaseObject {
 	private WeddingCard weddingCard;
 
 	public Feedback() {
-		// TODO Auto-generated constructor stub
+		super();
+		
+		this.feedbackId = -1;
 	}
 
 	public Feedback(long feedbackId, String guestName, int attendees,

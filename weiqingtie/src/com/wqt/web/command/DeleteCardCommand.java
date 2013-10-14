@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wqt.model.User;
 import com.wqt.service.WeddingCardService;
 import com.wqt.util.AppUtils;
 
@@ -31,11 +32,19 @@ public class DeleteCardCommand implements ICommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String strCardId = request.getParameter("card_id");
+		String strCardId = request.getParameter("cid");
+		boolean success = false;
 		if (!AppUtils.checkEmptyString(strCardId)) {
 			long cardId = Long.valueOf(strCardId);
-			
-			weddingCardService.deleteWeddingCard(cardId);
+			User user = (User)request.getSession().getAttribute("loginUser");
+			if (user != null) {
+				weddingCardService.deleteWeddingCard(cardId, user.getUserId());
+				success = true;
+			}
+		}
+		
+		if (!success) {
+			CommandHelp.setErrorMessage(request, "The card probably does not belong to you.");
 		}
 	}
 

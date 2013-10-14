@@ -12,7 +12,7 @@
         <!-- default area -->
 		<init-param>
 			<param-name>defaultPage</param-name>
-			<param-value>/jsp/home/home.jsp</param-value>
+			<param-value>/jsp/manage/home.jsp</param-value>
 		</init-param>
 		<init-param>
 			<param-name>defaultCommand</param-name>
@@ -22,7 +22,7 @@
 		<!-- home area -->
 		<init-param>
 			<param-name>homePage</param-name>
-			<param-value>/jsp/home/home.jsp</param-value>
+			<param-value>/jsp/manage/home.jsp</param-value>
 		</init-param>
 		<init-param>
 			<param-name>homeCommand</param-name>
@@ -33,15 +33,15 @@
 		<!-- login -->
 		<init-param>
 			<param-name>loginPage</param-name>
-			<param-value>/jsp/user/login.jsp</param-value>
+			<param-value>/jsp/manage/login.jsp</param-value>
 		</init-param>
 		<init-param>
 			<param-name>loginSuccessPage</param-name>
-			<param-value>/jsp/home/home.jsp</param-value>
+			<param-value>home.html</param-value>
 		</init-param>
 		<init-param>
 			<param-name>loginFailPage</param-name>
-			<param-value>/jsp/user/login.jsp</param-value>
+			<param-value>/jsp/manage/login.jsp</param-value>
 		</init-param>
 		<init-param>
 			<param-name>loginCommand</param-name>
@@ -56,7 +56,7 @@
 		<!-- logout -->
 		<init-param>
 			<param-name>logoutPage</param-name>
-			<param-value>/jsp/user/login.jsp</param-value>
+			<param-value>login.html</param-value>
 		</init-param>
 		<init-param>
 			<param-name>logoutCommand</param-name>
@@ -66,7 +66,11 @@
 		<!-- edit wedding card -->
 		<init-param>
 			<param-name>edit_cardPage</param-name>
-			<param-value>/jsp/card/editWeddingCard.jsp</param-value>
+			<param-value>/jsp/manage/editWeddingCard.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>edit_cardSuccessPage</param-name>
+			<param-value>home.html</param-value>
 		</init-param>
 		<init-param>
 			<param-name>edit_cardCommand</param-name>
@@ -76,13 +80,27 @@
 		<!-- delete wedding card -->
 		<init-param>
 			<param-name>delete_cardPage</param-name>
-			<param-value>/jsp/home/home.jsp</param-value>
+			<param-value>home.html</param-value>
 		</init-param>
 		<init-param>
 			<param-name>delete_cardCommand</param-name>
 			<param-value>com.wqt.web.command.DeleteCardCommand</param-value>
 		</init-param>
 		
+		<!-- Upload files -->
+		<init-param>
+			<param-name>edit_photosPage</param-name>
+			<param-value>/jsp/manage/editPhotos.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>edit_photosCommand</param-name>
+			<param-value>com.wqt.web.command.EditPhotosCommand</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>upload_photoCommand</param-name>
+			<param-value>com.wqt.web.command.UploadPhotoCommand</param-value>
+		</init-param>
     </servlet>
 
     <servlet-mapping>

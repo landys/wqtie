@@ -23,6 +23,11 @@ public class FeedbackDao extends AbstractBaseDao<Feedback> {
 	}
 
 	@Override
+	protected void setId(Feedback t, long id) {
+		t.setFeedbackId(id);
+	}
+
+	@Override
 	protected String getSqlPropPrefix() {
 		return SqlPropPrefix;
 	}

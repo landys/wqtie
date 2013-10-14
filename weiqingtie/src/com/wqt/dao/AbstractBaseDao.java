@@ -38,6 +38,8 @@ public abstract class AbstractBaseDao<T> implements IBaseDao<T> {
 
 	protected abstract long getId(T t);
 
+	protected abstract void setId(T t, long id);
+
 	protected abstract String getSqlPropPrefix();
 
 	protected abstract T parseRs(ResultSet rs) throws SQLException;
@@ -51,7 +53,8 @@ public abstract class AbstractBaseDao<T> implements IBaseDao<T> {
 		long id = getId(t);
 		String sqlPropPrefix = getSqlPropPrefix();
 		String sql;
-		if (id >= 0) {
+		boolean isUpdate = (id >= 0);
+		if (!isUpdate) {
 			sql = dbProps.getProperty(sqlPropPrefix + "Create");
 		}
 		else {
@@ -61,11 +64,19 @@ public abstract class AbstractBaseDao<T> implements IBaseDao<T> {
 		try {
 			List<Object> paras = convertToParaListWithoutId(t);
 
-			if (id >= 0) {
+			if (isUpdate) {
 				paras.add(id);
 			}
 
-			dbSupport.updateSql(sql, paras);
+			dbSupport.updateSql(sql, paras, !isUpdate);
+
+			// update the id if insert.
+			if (!isUpdate) {
+				id = dbSupport.getGeneratedId();
+
+				setId(t, id);
+			}
+
 		}
 		finally {
 			dbSupport.close();
@@ -87,7 +98,7 @@ public abstract class AbstractBaseDao<T> implements IBaseDao<T> {
 			List<Object> paras = new ArrayList<Object>();
 			paras.add(id);
 
-			dbSupport.updateSql(sql, paras);
+			dbSupport.updateSql(sql, paras, false);
 		}
 		finally {
 			dbSupport.close();

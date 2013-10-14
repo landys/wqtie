@@ -27,13 +27,18 @@ public class UserDao extends AbstractBaseDao<User> {
 		paras.add(userName);
 
 		User user = execFindObject(sql, paras);
-		
+
 		return user;
 	}
 
 	@Override
 	protected long getId(User t) {
 		return t.getUserId();
+	}
+
+	@Override
+	protected void setId(User t, long id) {
+		t.setUserId(id);
 	}
 
 	@Override

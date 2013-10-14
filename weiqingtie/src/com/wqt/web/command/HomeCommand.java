@@ -33,7 +33,7 @@ public class HomeCommand implements ICommand {
 			throws ServletException, IOException {
 		LOG.debug("Enter HomeCommand.execute.");
 
-		User user = (User) request.getSession().getAttribute("loginUser");
+		final User user = (User) request.getSession().getAttribute("loginUser");
 
 		if (user != null) {
 			List<WeddingCard> cards = weddingCardService

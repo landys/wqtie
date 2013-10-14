@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -60,7 +61,7 @@ public class DbSupport {
 	public ResultSet querySql(final String sql, final List<Object> paras)
 			throws AppException {
 		isLastUpdata = false;
-		prepareStatement(sql, paras);
+		prepareStatement(sql, paras, false);
 		try {
 			rs = preState.executeQuery();
 		}
@@ -71,10 +72,10 @@ public class DbSupport {
 		return rs;
 	}
 
-	public void updateSql(final String sql, final List<Object> paras)
-			throws AppException {
+	public void updateSql(final String sql, final List<Object> paras,
+			final boolean returnKey) throws AppException {
 		isLastUpdata = true;
-		prepareStatement(sql, paras);
+		prepareStatement(sql, paras, returnKey);
 		try {
 			preState.executeUpdate();
 		}
@@ -88,13 +89,13 @@ public class DbSupport {
 		}
 	}
 
-	public int getGeneratedId() throws AppException {
+	public long getGeneratedId() throws AppException {
 		if (preState != null && isLastUpdata == true) {
 			ResultSet lrs = null;
 			try {
 				lrs = preState.getGeneratedKeys();
 				if (lrs.next()) {
-					return (int) lrs.getInt(1);
+					return (int) lrs.getLong(1);
 				}
 			}
 			catch (SQLException e) {
@@ -116,14 +117,20 @@ public class DbSupport {
 		return -1;
 	}
 
-	private void prepareStatement(final String sql, final List<Object> paras)
-			throws AppException {
+	private void prepareStatement(final String sql, final List<Object> paras,
+			final boolean returnKey) throws AppException {
 		if (conn == null) {
 			initConnection();
 		}
 
 		try {
-			preState = conn.prepareStatement(sql);
+			if (returnKey) {
+				preState = conn.prepareStatement(sql,
+						Statement.RETURN_GENERATED_KEYS);
+			}
+			else {
+				preState = conn.prepareStatement(sql);
+			}
 			if (paras != null) {
 				for (int i = 0; i < paras.size(); i++) {
 					Object para = paras.get(i);

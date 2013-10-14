@@ -32,15 +32,15 @@ public class LoginCommand implements ICommand {
 			throws ServletException, IOException {
 		LOG.debug("Enter LoginCommand.execute.");
 
-		String name = request.getParameter("name");
+		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		if (AppUtils.checkEmptyString(name)
+		if (AppUtils.checkEmptyString(userName)
 				|| AppUtils.checkEmptyString(password)) {
 			return;
 		}
 
-		User user = userService.validateUser(name, password);
+		User user = userService.validateUser(userName.trim(), password.trim());
 		if (user != null) {
 			CommandHelp.setExecuteResult(request, CommandHelp.SuccessResult,
 					null, null);

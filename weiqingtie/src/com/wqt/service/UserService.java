@@ -23,17 +23,14 @@ public class UserService {
 		}
 	}
 
-	public User validateUser(String userName, String password) {
+	public User validateUser(final String userName, final String password) {
 		User user = null;
 
 		if (!AppUtils.checkEmptyString(userName)
 				&& !AppUtils.checkEmptyString(password)) {
-			userName = userName.trim();
-			password = password.trim();
-
 			try {
 				user = userDao.findByUserName(userName);
-				if (!password.equals(user.getUserPwd())) {
+				if (user != null && !password.equals(user.getUserPwd())) {
 					user = null;
 				}
 			}

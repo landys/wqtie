@@ -23,8 +23,25 @@ public class AssetDao extends AbstractBaseDao<Asset> {
 	}
 
 	@Override
+	protected void setId(Asset t, long id) {
+		t.setAssetId(id);
+	}
+
+	@Override
 	protected String getSqlPropPrefix() {
 		return SqlPropPrefix;
+	}
+
+	public List<Asset> findAssetsByCardId(final long cardId, final long userId)
+			throws AppException {
+		String sql = dbProps.getProperty("FindAssetsByCardId");
+		List<Object> paras = new ArrayList<Object>();
+		paras.add(cardId);
+		paras.add(userId);
+
+		List<Asset> assets = execFindObjects(sql, paras);
+
+		return assets;
 	}
 
 	@Override

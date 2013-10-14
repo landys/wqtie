@@ -22,6 +22,8 @@ public class User extends BaseObject {
 
 	public User() {
 		super();
+		
+		this.userId = -1;
 	}
 
 	public User(long userId) {

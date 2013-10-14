@@ -48,7 +48,9 @@ create table `tbl_wedding_card` (
 `weddingDate` datetime,
 `weddingDateDesc` varchar(255),
 `phone` varchar(50),
-`note` varchar(2000),
+`note` varchar(1000),
+`story` varchar(3000),
+`video` varchar(1000),
 `placeId` int(10) unsigned,
 `agentId` int(10) unsigned,
 `templateId` int(10) unsigned,
@@ -94,3 +96,10 @@ create table tbl_feedback (
 PRIMARY KEY  using btree (`feedbackId`),
 CONSTRAINT `FK_tbl_feedback_tbl_wedding_card_cardId` FOREIGN KEY (`cardId`) REFERENCES `tbl_wedding_card` (`cardId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- insert initial date --
+insert into tbl_user (userName, userPwd, priviledge, createDate) value ('admin', '654321', 0, '2013-10-10');
+insert into tbl_agent (name, createDate) value("某某婚庆", '2013-10-10');
+insert into tbl_agent (name, createDate) value("天天婚庆", '2013-10-10');
+

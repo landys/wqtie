@@ -29,7 +29,7 @@ public class Agent extends BaseObject {
 
 	public Agent() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.agentId = -1;
 	}
 
 	public Agent(long agentId) {

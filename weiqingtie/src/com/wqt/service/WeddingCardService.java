@@ -6,9 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.wqt.dao.AgentDao;
+import com.wqt.dao.AssetDao;
+import com.wqt.dao.CardAssetDao;
 import com.wqt.dao.PlaceDao;
 import com.wqt.dao.WeddingCardDao;
 import com.wqt.model.Agent;
+import com.wqt.model.Asset;
+import com.wqt.model.CardAsset;
 import com.wqt.model.Place;
 import com.wqt.model.WeddingCard;
 import com.wqt.util.AppException;
@@ -25,6 +29,10 @@ public class WeddingCardService {
 
 	private PlaceDao placeDao;
 
+	private AssetDao assetDao;
+
+	private CardAssetDao cardAssetDao;
+
 	public WeddingCardService() {
 		super();
 
@@ -32,10 +40,34 @@ public class WeddingCardService {
 			cardDao = new WeddingCardDao();
 			agentDao = new AgentDao();
 			placeDao = new PlaceDao();
+			assetDao = new AssetDao();
+			cardAssetDao = new CardAssetDao();
 		}
 		catch (AppException e) {
 			// do nothing
 		}
+	}
+
+	public WeddingCard findWeddingCard(final long cardId) {
+		WeddingCard card = null;
+
+		try {
+			card = cardDao.find(cardId);
+			Agent agent = card.getAgent();
+			if (agent != null) {
+				card.setAgent(agentDao.find(agent.getAgentId()));
+			}
+
+			Place place = card.getPlace();
+			if (place != null) {
+				card.setPlace(placeDao.find(place.getPlaceId()));
+			}
+		}
+		catch (AppException e) {
+			// do nothing.
+		}
+
+		return card;
 	}
 
 	public List<WeddingCard> findWeddingCardsByUserId(final long userId) {
@@ -87,31 +119,83 @@ public class WeddingCardService {
 		return cards;
 	}
 
-	public void deleteWeddingCard(long cardId) {
+	public boolean deleteWeddingCard(final long cardId, final long userId) {
 		try {
+			WeddingCard card = cardDao.find(cardId);
+			if (card.getUser().getUserId() != userId) {
+				// the card doesn't belong to the user.
+				return false;
+			}
+
 			cardDao.delete(cardId);
+		}
+		catch (AppException e) {
+			// do nothing
+
+			return false;
+		}
+
+		return true;
+	}
+
+	public void saveOrUpdateWeddingCard(final WeddingCard card) {
+		try {
+			if (card != null) {
+				// no need to save agent. Agent is saved in other way.
+				// if (card.getAgent() != null) {
+				// agentDao.saveOrUpdate(card.getAgent());
+				// }
+
+				if (card.getPlace() != null) {
+					placeDao.saveOrUpdate(card.getPlace());
+				}
+
+				// saving card must be after saving place.
+				cardDao.saveOrUpdate(card);
+			}
+		}
+		catch (AppException e) {
+			// do nothing
+		}
+	}
+
+	public List<Asset> findPhotosByCardId(final long cardId, final long userId) {
+		List<Asset> photos = null;
+		try {
+			photos = assetDao.findAssetsByCardId(cardId, userId);
+		}
+		catch (AppException e) {
+			// do nothing
+		}
+
+		return photos;
+	}
+
+	public void saveOrUpdateAsset(final Asset asset, final long cardId) {
+		if (asset == null) {
+			return;
+		}
+
+		try {
+			assetDao.saveOrUpdate(asset);
+
+			cardAssetDao
+					.saveOrUpdate(new CardAsset(cardId, asset.getAssetId()));
 		}
 		catch (AppException e) {
 			// do nothing
 		}
 	}
 	
-	public void saveOrUpdateWeddingCard(WeddingCard card) {
+	public List<Agent> findAllAgents() {
+		List<Agent> agents = null;
 		try {
-			if (card != null) {
-				cardDao.saveOrUpdate(card);
-				
-				if (card.getAgent() != null) {
-					agentDao.saveOrUpdate(card.getAgent());
-				}
-				
-				if (card.getPlace() != null) {
-					placeDao.saveOrUpdate(card.getPlace());
-				}
-			}
+			agents = agentDao.findAll();
 		}
 		catch (AppException e) {
 			// do nothing
 		}
+		
+		return agents;
 	}
 }
