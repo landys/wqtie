@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.baidu.bae.api.util.BaeEnv;
 import com.wqt.util.AppException;
 
 /**
@@ -38,6 +39,30 @@ public class DbSupport {
 	private static final Logger LOG = Logger.getLogger(DbSupport.class);
 
 	private void initConnection() throws AppException {
+		String host = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_ADDR_SQL_IP);
+		String port = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_ADDR_SQL_PORT);
+		String username = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_AK);
+		String password = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_SK);
+		String driveName = "com.mysql.jdbc.Driver";
+		String dbUrl = "jdbc:mysql://";
+		String serverName = host + ":" + port + "/";
+
+		String databaseName = "fugqnNBSnqciAnwzYZCE";
+		String connName = dbUrl + serverName + databaseName;
+		try {
+			Class.forName(driveName);
+			conn = DriverManager.getConnection(connName, username, password);
+			conn.setAutoCommit(true);
+		} catch (ClassNotFoundException e) {
+			LOG.error(e.getMessage());
+			throw new AppException("Error: DB Driver not found.");
+		} catch (SQLException e) {
+			LOG.error(e.getMessage());
+			throw new AppException("Error: Fail to get DB connection.");
+		}
+	}
+
+	public void initConnection(int debug) throws AppException {
 		// native connect to database
 		String driveName = "org.gjt.mm.mysql.Driver";
 		String url = "jdbc:mysql://localhost:3306/weiqingtie";
@@ -47,12 +72,10 @@ public class DbSupport {
 			Class.forName(driveName);
 			conn = DriverManager.getConnection(url, username, password);
 			conn.setAutoCommit(true);
-		}
-		catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			LOG.error(e.getMessage());
 			throw new AppException("Error: DB Driver not found.");
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.error(e.getMessage());
 			throw new AppException("Error: Fail to get DB connection.");
 		}
@@ -64,8 +87,7 @@ public class DbSupport {
 		prepareStatement(sql, paras, false);
 		try {
 			rs = preState.executeQuery();
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.error(e.getMessage());
 			throw new AppException("Error: Fail to read data from DB.");
 		}
@@ -78,12 +100,10 @@ public class DbSupport {
 		prepareStatement(sql, paras, returnKey);
 		try {
 			preState.executeUpdate();
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.error(e.getMessage());
 			throw new AppException("Error: Fail to write data to DB.");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			LOG.error(e.getMessage());
 			throw new AppException("Error: Update error.");
 		}
@@ -97,17 +117,14 @@ public class DbSupport {
 				if (lrs.next()) {
 					return (int) lrs.getLong(1);
 				}
-			}
-			catch (SQLException e) {
+			} catch (SQLException e) {
 				LOG.error(e.getMessage());
 				throw new AppException("Error: Get auto-increment id.");
-			}
-			finally {
+			} finally {
 				if (lrs != null) {
 					try {
 						lrs.close();
-					}
-					catch (SQLException e) {
+					} catch (SQLException e) {
 						LOG.error(e.getMessage());
 						throw new AppException("Error: Close ResultSet wrong.");
 					}
@@ -127,8 +144,7 @@ public class DbSupport {
 			if (returnKey) {
 				preState = conn.prepareStatement(sql,
 						Statement.RETURN_GENERATED_KEYS);
-			}
-			else {
+			} else {
 				preState = conn.prepareStatement(sql);
 			}
 			if (paras != null) {
@@ -137,30 +153,23 @@ public class DbSupport {
 					int index = i + 1;
 					if (para instanceof String) {
 						preState.setString(index, (String) para);
-					}
-					else if (para instanceof Integer) {
+					} else if (para instanceof Integer) {
 						preState.setInt(index, ((Integer) para).intValue());
-					}
-					else if (para instanceof Long) {
+					} else if (para instanceof Long) {
 						preState.setLong(index, ((Long) para).longValue());
-					}
-					else if (para instanceof Double) {
+					} else if (para instanceof Double) {
 						preState.setDouble(index, ((Double) para).doubleValue());
-					}
-					else if (para instanceof Float) {
+					} else if (para instanceof Float) {
 						preState.setFloat(index, ((Float) para).floatValue());
-					}
-					else if (para instanceof Date) {
+					} else if (para instanceof Date) {
 						preState.setTimestamp(index, new Timestamp(
 								((Date) para).getTime()));
-					}
-					else {
+					} else {
 						preState.setObject(index, para);
 					}
 				}
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.error(e.getMessage());
 			throw new AppException("Error: Prepare parameters wrong.");
 		}
@@ -174,8 +183,7 @@ public class DbSupport {
 			try {
 				rs.close();
 				rs = null;
-			}
-			catch (SQLException e) {
+			} catch (SQLException e) {
 				LOG.error(e.getMessage());
 				throw new AppException("Error: Close ResultSet wrong.");
 			}
@@ -193,8 +201,7 @@ public class DbSupport {
 			try {
 				preState.close();
 				preState = null;
-			}
-			catch (SQLException e) {
+			} catch (SQLException e) {
 				LOG.error(e.getMessage());
 				throw new AppException("Error: Close prepared statement wrong.");
 			}
@@ -212,8 +219,7 @@ public class DbSupport {
 			try {
 				conn.close();
 				conn = null;
-			}
-			catch (SQLException e) {
+			} catch (SQLException e) {
 				LOG.error(e.getMessage());
 				throw new AppException("Error: Close connection wrong.");
 			}

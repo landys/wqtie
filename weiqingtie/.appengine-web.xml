@@ -10,4 +10,4 @@
 	<local_sql_user></local_sql_user>
 	<local_sql_password></local_sql_password>
 	<save_emulation_data>false</save_emulation_data>
-</appengine-web-app>
+<sandbox>true</sandbox></appengine-web-app>
