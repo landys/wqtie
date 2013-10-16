@@ -81,7 +81,6 @@ public class WeddingCard extends BaseObject {
 		this.agent = agent;
 		this.template = template;
 		this.music = music;
-		this.video = video;
 		this.photos = photos;
 		this.feedbacks = feedbacks;
 	}

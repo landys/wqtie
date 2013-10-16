@@ -1,0 +1,254 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	/*background:#e5362e;*/
+	/*background:#00ff00;*/
+	background-image:url(images/p2r.jpg);
+	background-size: 100% 100%;
+}
+.stencilBox_second{
+	width:100%;
+	/*background-color:#ef1140;*/
+	margin:0 auto;
+}
+.stencilBox_second_content{
+	width:304px;
+	margin:0 auto;
+	height:auto;
+	position:relative;
+	padding-bottom:10px;
+	/*background-color:#ef1140;*/
+}
+.stencilBox_second_top{
+	color:#fff;
+	background:#441414;
+	font-size:14px;
+	border-bottom:2px solid #a40a2e;
+	text-align:center;
+	height:30px;
+	line-height:30px;
+}
+.stencilBox_second_bg{
+	width:304px;
+	background:url(../photos/p1.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.stencilBox_second_bg_one{
+	height:356px;
+}
+
+.public_bg{
+	background:url(images/photo_bg02.jpg?v=2) no-repeat;
+	position:relative;
+}
+.stencil_second_nav_a li{
+	float:left;
+	margin-right:13px;
+}
+.stencil_second_nav_a{
+	margin-left:12px;
+}
+.stencil_second_nav_a li a{
+	display:block;
+	width:60px;
+	height:47px;
+	line-height:16px;
+	text-align:center;
+	font-size:14px;
+	padding-top:13px;
+	background:url(images/nav_yuan.jpg) no-repeat;
+}
+.stencil_second_nav_a li a:hover{
+	text-decoration:none;
+}
+.stencil_second_nav_a .a1{
+	margin-top:274px;
+}
+.stencil_second_nav_a .a2{
+	margin-top:259px;
+}
+.stencil_second_nav_a .a3{
+	margin-top:246px;
+}
+.stencil_second_nav_a .a4{
+	margin-top:231px;
+}
+.stencil_second_nav_b li{
+	float:left;
+}
+.stencil_second_nav_b .b1, .stencil_second_nav_b .b2, .stencil_second_nav_b .b3{
+	display:block;
+	height:61px;
+	position:absolute;
+	line-height:16px;
+	font-size:14px;
+	padding-top:14px;
+}
+.stencil_second_nav_b a:hover{
+	text-decoration:none;
+}
+.stencil_second_nav_b .b1{
+	background:url(images/nav_bj01.jpg) no-repeat;
+	width:75px;
+	left:23px;
+	top:381px;
+	padding-left:32px;
+}
+.stencil_second_nav_b .b2{
+	left:109px;
+	top:360px;
+	width:81px;
+	padding-left:38px;
+	background:url(images/nav_bj02.jpg) no-repeat;
+}
+.stencil_second_nav_b .b3{
+	left:203px;
+	top:335px;
+	width:79px;
+	padding-left:36px;
+	background:url(images/nav_bj03.jpg) no-repeat;
+}
+
+
+/*婚礼地点*/
+.location_pic{
+	position:absolute;
+	right:-12px;
+	top:69px;
+	display:block;
+	width:76px;
+	height:74px;
+	font-size:14px;
+	line-height:16px;
+	background:url(images/location_pic.png) no-repeat;
+	padding:7px 0 0 25px;
+}
+.location_main{
+	padding-top:151px;
+}
+.location_main p{
+	color:#fff;
+	text-align:center;
+	line-height:18px;
+}
+.location_map img{
+	width:285px;
+	height:139px;
+	display:block;
+	margin:6px auto;
+}
+.location_main span{
+	display:block;
+	line-height:22px;
+	text-align:left;
+	font-size:14px;
+	padding-left:40px;
+}
+.wedding_photo{
+	background:url(images/photo_03.jpg) no-repeat;
+	width:286px;
+	height:255px;
+	position:relative;
+	margin:0 auto;
+}
+.wedding_photo_a1, .wedding_photo_a2{
+	position:absolute;
+	top:120px;
+}
+.wedding_photo_a1{
+	left:10px;
+}
+.wedding_photo_a2{
+	right:10px;
+}
+.interactive01{
+	margin-bottom:20px;
+	font-size:16px;
+}
+.scene_txt{
+	height:30px;
+	line-height:30px;
+	width:221px; 
+	border:none; 
+	background:none;
+	background:#fff;
+	color:#999;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	padding:0 3px;
+	font-size:14px;
+	border-radius:3px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	vertical-align:middle;
+}
+.scene_txt01{
+	width:279px;
+}
+.scene_area{
+	width:279px;
+	height:80px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	font-size:14px;
+	border-radius:3px;
+	color:#999;
+	border:none;
+	background:none;
+	background:#fff;
+	padding:3px;
+	margin-bottom:10px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.sceneBtn{
+	/*color:#ef1140;*/
+	width:53px;
+	border:none;
+	background:none;
+	background:url(images/scene_btn01.jpg) no-repeat;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	vertical-align:middle;
+	cursor:pointer;
+}
+.guests_box{
+	width:286px;
+	padding:0 9px;
+	margin:0 auto;
+}
+.guests_box h3{
+	margin-bottom:10px; 
+	text-align:center;
+}
+.guests_box span{
+	margin:6px 0;
+}
+.interactive01{
+	margin-bottom:20px;
+	font-size:16px;
+}
+.interactive01 a{
+	font-size:16px;
+	text-decoration:underline;
+}
+.interactive01 a:hover{
+	text-decoration:none;
+}
+.interactive02{
+	font-size:16px;
+	margin-bottom:6px;
+	color:#fd9a00;
+}
+.interactive03{
+	font-size:12px;
+	color:#fd9a00;
+	margin-bottom:10px;
+}
+.about_color{
+    color: #000000;
+}

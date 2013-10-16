@@ -101,6 +101,53 @@
 			<param-name>upload_photoCommand</param-name>
 			<param-value>com.wqt.web.command.UploadPhotoCommand</param-value>
 		</init-param>
+		
+		<!-- card area -->
+	 	<init-param>
+			<param-name>cardPage</param-name>
+			<param-value>/jsp/card/t2.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cardCommand</param-name>
+			<param-value>com.wqt.web.command.EditWeddingCardCommand</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>feedbackPage</param-name>
+			<param-value>/jsp/card/t2_feedback.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>feedbackCommand</param-name>
+			<param-value>com.wqt.web.command.EditWeddingCardCommand</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>photosPage</param-name>
+			<param-value>/jsp/card/t2_photos.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>photosCommand</param-name>
+			<param-value>com.wqt.web.command.EditWeddingCardCommand</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>placePage</param-name>
+			<param-value>/jsp/card/t2_place.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>placeCommand</param-name>
+			<param-value>com.wqt.web.command.EditWeddingCardCommand</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>storyPage</param-name>
+			<param-value>/jsp/card/t2_story.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>storyCommand</param-name>
+			<param-value>com.wqt.web.command.EditWeddingCardCommand</param-value>
+		</init-param>
+		
     </servlet>
 
     <servlet-mapping>

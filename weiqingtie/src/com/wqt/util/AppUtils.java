@@ -26,6 +26,8 @@ public class AppUtils {
 	 * @return
 	 */
 	public static String dateToSimpleString(final Date date) {
+		if (date == null) return null;
+		
 		return onlyDateFormat.format(date);
 	}
 	

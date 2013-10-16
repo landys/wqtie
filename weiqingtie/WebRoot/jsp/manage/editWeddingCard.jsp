@@ -73,7 +73,7 @@ List<Asset> templates = (List<Asset>)request.getAttribute("templates");
    	</tr>
    	<tr>
    		<td><label for="wedding_date">日期（年-月-日，如2013-11-24）：</label></td>
-   		<td><input type="text" name="wedding_date" id="wedding_date" size="50" value="<%=(card != null ? AppUtils.dateToSimpleString(card.getWeddingDate()) : "")%>" /></td>
+   		<td><input type="text" name="wedding_date" id="wedding_date" size="50" value="<%=(card != null && card.getWeddingDate() != null ? AppUtils.dateToSimpleString(card.getWeddingDate()) : "")%>" /></td>
    	</tr>
    	<tr>
    		<td><label for="wedding_date_desc">时间描述（比如：2013年11月24日中午11点半）：</label></td>
@@ -124,8 +124,8 @@ for (Asset a : musics) {
 			</select></td>
    	</tr>
    	<tr>
-   		<td><label for="video_url">视频链接：</label></td>
-   		<td><input type="text" name="video_url" id="video_url" size="50" value="<%=(card != null ? card.getVideo() : "") %>" /></td>
+   		<td><label for="video">视频链接：</label></td>
+   		<td><input type="text" name="video" id="video" size="50" value="<%=(card != null ? card.getVideo() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="story">爱情故事：</label></td>
