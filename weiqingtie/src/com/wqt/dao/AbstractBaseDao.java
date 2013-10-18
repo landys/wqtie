@@ -26,12 +26,12 @@ public abstract class AbstractBaseDao<T> implements IBaseDao<T> {
 
 	protected DbSupportFactory dbSupportFactory;
 
-	private static final String DbPropertiesFileName = "db.properties";
+	private static final String SqlPropertiesFileName = "sql.properties";
 
 	private static final Logger LOG = Logger.getLogger(AbstractBaseDao.class);
 
 	protected AbstractBaseDao() throws AppException {
-		dbProps = PropertiesManager.getProperties(DbPropertiesFileName);
+		dbProps = PropertiesManager.getProperties(SqlPropertiesFileName);
 
 		dbSupportFactory = DbSupportFactory.getInstance();
 	}

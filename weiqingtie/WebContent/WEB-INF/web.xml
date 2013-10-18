@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="2.5"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" >
+
+    <servlet>
+        <servlet-name>webControllerServlet</servlet-name>
+        <servlet-class>com.wqt.web.servlet.WebControllerServlet</servlet-class>
+        
+        <!-- default area -->
+		<init-param>
+			<param-name>defaultPage</param-name>
+			<param-value>/jsp/manage/home.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>defaultCommand</param-name>
+			<param-value>com.wqt.web.command.HomeCommand</param-value>
+		</init-param>
+		
+		<!-- home area -->
+		<init-param>
+			<param-name>homePage</param-name>
+			<param-value>/jsp/manage/home.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>homeCommand</param-name>
+			<param-value>com.wqt.web.command.HomeCommand</param-value>
+		</init-param>
+		
+		<!-- user area -->
+		<!-- login -->
+		<init-param>
+			<param-name>loginPage</param-name>
+			<param-value>/jsp/manage/login.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>loginSuccessPage</param-name>
+			<param-value>home.html</param-value>
+		</init-param>
+		<init-param>
+			<param-name>loginFailPage</param-name>
+			<param-value>/jsp/manage/login.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>loginCommand</param-name>
+			<param-value>com.wqt.web.command.LoginCommand</param-value>
+		</init-param>
+		<init-param>
+			<!-- default is true -->
+			<param-name>loginNeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+		<!-- logout -->
+		<init-param>
+			<param-name>logoutPage</param-name>
+			<param-value>login.html</param-value>
+		</init-param>
+		<init-param>
+			<param-name>logoutCommand</param-name>
+			<param-value>com.wqt.web.command.logoutCommand</param-value>
+		</init-param>
+		
+		<!-- edit wedding card -->
+		<init-param>
+			<param-name>edit_cardPage</param-name>
+			<param-value>/jsp/manage/edit_wedding_card.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>edit_cardSuccessPage</param-name>
+			<param-value>home.html</param-value>
+		</init-param>
+		<init-param>
+			<param-name>edit_cardCommand</param-name>
+			<param-value>com.wqt.web.command.EditWeddingCardCommand</param-value>
+		</init-param>
+		
+		<!-- delete wedding card -->
+		<init-param>
+			<param-name>delete_cardPage</param-name>
+			<param-value>home.html</param-value>
+		</init-param>
+		<init-param>
+			<param-name>delete_cardCommand</param-name>
+			<param-value>com.wqt.web.command.DeleteCardCommand</param-value>
+		</init-param>
+		
+		<!-- Upload files -->
+		<init-param>
+			<param-name>edit_photosPage</param-name>
+			<param-value>/jsp/manage/editPhotos.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>edit_photosCommand</param-name>
+			<param-value>com.wqt.web.command.EditPhotosCommand</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>upload_photoCommand</param-name>
+			<param-value>com.wqt.web.command.UploadPhotoCommand</param-value>
+		</init-param>
+		
+		<!-- card area -->
+	 	<init-param>
+			<param-name>cardPage</param-name>
+			<param-value>/jsp/card/t2.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cardCommand</param-name>
+			<param-value>com.wqt.web.command.ViewWeddingCardCommand</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cardNeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>feedbackPage</param-name>
+			<param-value>/jsp/card/t2_feedback.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>feedbackCommand</param-name>
+			<param-value>com.wqt.web.command.ViewWeddingCardCommand</param-value>
+		</init-param>
+		<init-param>
+			<param-name>feedbackNeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>photosPage</param-name>
+			<param-value>/jsp/card/t2_photos.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>photosCommand</param-name>
+			<param-value>com.wqt.web.command.ViewWeddingCardCommand</param-value>
+		</init-param>
+		<init-param>
+			<param-name>photosNeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>placePage</param-name>
+			<param-value>/jsp/card/t2_place.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>placeCommand</param-name>
+			<param-value>com.wqt.web.command.ViewWeddingCardCommand</param-value>
+		</init-param>
+		<init-param>
+			<param-name>placeNeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>storyPage</param-name>
+			<param-value>/jsp/card/t2_story.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>storyCommand</param-name>
+			<param-value>com.wqt.web.command.ViewWeddingCardCommand</param-value>
+		</init-param>
+		<init-param>
+			<param-name>storyNeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>webControllerServlet</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>webControllerServlet</servlet-name>
+        <url-pattern>*.rmt</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.htm</welcome-file>
+    </welcome-file-list>
+
+</web-app>

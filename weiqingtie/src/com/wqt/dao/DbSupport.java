@@ -12,7 +12,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.baidu.bae.api.util.BaeEnv;
+//import com.baidu.bae.api.util.BaeEnv;
+import com.sina.sae.util.SaeUserInfo;
 import com.wqt.util.AppException;
 
 /**
@@ -38,16 +39,40 @@ public class DbSupport {
 
 	private static final Logger LOG = Logger.getLogger(DbSupport.class);
 
+//	private void initConnection() throws AppException {
+//		String host = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_ADDR_SQL_IP);
+//		String port = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_ADDR_SQL_PORT);
+//		String username = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_AK);
+//		String password = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_SK);
+//		String driveName = "com.mysql.jdbc.Driver";
+//		String dbUrl = "jdbc:mysql://";
+//		String serverName = host + ":" + port + "/";
+//
+//		String databaseName = "fugqnNBSnqciAnwzYZCE";
+//		String connName = dbUrl + serverName + databaseName;
+//		try {
+//			Class.forName(driveName);
+//			conn = DriverManager.getConnection(connName, username, password);
+//			conn.setAutoCommit(true);
+//		} catch (ClassNotFoundException e) {
+//			LOG.error(e.getMessage());
+//			throw new AppException("Error: DB Driver not found.");
+//		} catch (SQLException e) {
+//			LOG.error(e.getMessage());
+//			throw new AppException("Error: Fail to get DB connection.");
+//		}
+//	}
+	
 	private void initConnection() throws AppException {
-		String host = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_ADDR_SQL_IP);
-		String port = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_ADDR_SQL_PORT);
-		String username = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_AK);
-		String password = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_SK);
+		String host = "w.rdc.sae.sina.com.cn";
+		String port = "3307";
+		String username = SaeUserInfo.getAccessKey();
+		String password = SaeUserInfo.getSecretKey();
 		String driveName = "com.mysql.jdbc.Driver";
 		String dbUrl = "jdbc:mysql://";
 		String serverName = host + ":" + port + "/";
 
-		String databaseName = "fugqnNBSnqciAnwzYZCE";
+		String databaseName = "app_weiqingtie";
 		String connName = dbUrl + serverName + databaseName;
 		try {
 			Class.forName(driveName);
@@ -61,6 +86,7 @@ public class DbSupport {
 			throw new AppException("Error: Fail to get DB connection.");
 		}
 	}
+	
 
 	public void initConnection(int debug) throws AppException {
 		// native connect to database

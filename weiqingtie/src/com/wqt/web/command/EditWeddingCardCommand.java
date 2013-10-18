@@ -58,7 +58,7 @@ public class EditWeddingCardCommand implements ICommand {
 			long cardId = Long.valueOf(strCardId);
 			card = weddingCardService.findWeddingCard(cardId);
 			if (card == null || card.getUser().getUserId() != user.getUserId()) {
-				CommandHelp.setErrorMessage(request, "Error: The card doesn't belong to you.");
+				CommandHelp.setErrorMessage(request, "Error: The card doesn't exist or belong to you.");
 				return;
 			}
 			

@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -40,5 +42,25 @@ public class AppUtils {
 		}
 		
 		return null;
+	}
+	
+	public static String getWebSiteUrl(final HttpServletRequest request) {
+		if (request == null) return null;
+		
+		final StringBuilder sb = new StringBuilder("http://");
+		sb.append(request.getServerName());
+		
+		final int port = request.getServerPort();
+		if (port != 80) {
+			sb.append(":").append(port);
+		}
+		
+		sb.append(request.getContextPath());
+		
+		if (sb.charAt(sb.length() - 1) != '/') {
+			sb.append('/');
+		}
+		
+		return sb.toString();
 	}
 }
