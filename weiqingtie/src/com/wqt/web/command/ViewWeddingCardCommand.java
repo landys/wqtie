@@ -41,7 +41,7 @@ public class ViewWeddingCardCommand implements ICommand {
 		String strCardId = request.getParameter("cid");
 		if (!AppUtils.checkEmptyString(strCardId)) {
 			long cardId = Long.valueOf(strCardId);
-			card = weddingCardService.findWeddingCard(cardId);
+			card = weddingCardService.findWeddingCardWithPhotos(cardId);
 			if (card == null) {
 				CommandHelp.setErrorMessage(request,
 						"Error: The card doesn't exist.");

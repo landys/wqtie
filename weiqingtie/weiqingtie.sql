@@ -86,7 +86,7 @@ CONSTRAINT `FK_tbl_card_asset_tbl_wedding_card_cardId` FOREIGN KEY (`cardId`) RE
 
 -- feedback tables --
 create table tbl_feedback (
-`feedbackId` int(10) unsigned NOT NULL,
+`feedbackId` int(10) unsigned NOT NULL auto_increment,
 `cardId` int(10) unsigned NOT NULL,
 `guestName` varchar(255),
 `attendees` int(10) unsigned,

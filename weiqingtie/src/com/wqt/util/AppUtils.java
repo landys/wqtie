@@ -16,6 +16,8 @@ public class AppUtils {
 	
 	private static SimpleDateFormat onlyDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
+	public static final String AssetSitePrefix = "http://weiqingtie.u.qiniudn.com/";
+	
 	private static final Logger LOG = Logger.getLogger(AppUtils.class);
 
 	public static boolean checkEmptyString(final String str) {
@@ -38,6 +40,9 @@ public class AppUtils {
 			return onlyDateFormat.parse(strDate);
 		}
 		catch (ParseException e) {
+			LOG.error(e.getMessage());
+		}
+		catch (Exception e) {
 			LOG.error(e.getMessage());
 		}
 		

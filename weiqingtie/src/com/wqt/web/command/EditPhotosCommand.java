@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.wqt.model.Asset;
+import com.wqt.model.Photo;
 import com.wqt.model.User;
 import com.wqt.service.WeddingCardService;
 import com.wqt.util.AppUtils;
@@ -41,7 +41,7 @@ public class EditPhotosCommand implements ICommand {
 		if (!AppUtils.checkEmptyString(strCardId)) {
 			long cardId = Long.valueOf(strCardId);
 			
-			List<Asset> assets = weddingCardService.findPhotosByCardId(cardId, userId);
+			List<Photo> assets = weddingCardService.findPhotosByCardId(cardId);
 			
 			if (assets != null && assets.size() > 0) {
 				request.setAttribute("photos", assets);

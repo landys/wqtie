@@ -1,18 +1,14 @@
+<%@page import="com.wqt.model.Photo"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.wqt.model.Asset"%>
-<%@page import="com.wqt.model.Place"%>
-<%@page import="com.wqt.model.Agent"%>
 <%@page import="com.wqt.util.AppUtils"%>
 <%@page import="com.wqt.model.WeddingCard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>请贴编辑</title>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
-<script src="js/library/jquery-1.8.3.min.js"></script>
+<html>
+<head>
+<title>请贴编辑</title>
 </head>
 
 <body>
@@ -35,25 +31,13 @@ if (message != null && message.trim().length() > 0) {
 
 <%
 WeddingCard card = (WeddingCard)request.getAttribute("weddingCard");
-Agent agent = null;
 long cardId = -1;
-Place place = null;
-Asset template = null;
-Asset music = null;
-ArrayList<Asset> photos = null;
+List<Photo> photos = null;
 
 if (card != null) {
 	cardId = card.getCardId();
-	agent = card.getAgent();
-	place = card.getPlace();
-	template = card.getTemplate();
-	music = card.getMusic();
 	photos = card.getPhotos();
 }
-
-List<Agent> agents = (List<Agent>)request.getAttribute("agents");
-List<Asset> musics = (List<Asset>)request.getAttribute("musics");
-List<Asset> templates = (List<Asset>)request.getAttribute("templates");
 %>
    <form method="post" action="edit_card.html?step=submit<%=cardId >= 0 ? ("&cid=" + cardId) : ""%>">
    <table>
@@ -70,76 +54,94 @@ List<Asset> templates = (List<Asset>)request.getAttribute("templates");
    		<td><input type="text" name="bride" id="bride" size="50" value="<%=(card != null ? card.getBride() : "")%>" /></td>
    	</tr>
    	<tr>
-   		<td><label for="wedding_date">日期（年-月-日，如2013-11-24）：</label></td>
-   		<td><input type="text" name="wedding_date" id="wedding_date" size="50" value="<%=(card != null && card.getWeddingDate() != null ? AppUtils.dateToSimpleString(card.getWeddingDate()) : "")%>" /></td>
+   		<td><label for="cover_photo_url">封面照片文件名：</label></td>
+   		<td><input type="text" name="cover_photo_url" id="cover_photo_url" size="50" value="<%=(card != null ? card.getCoverPhotoUrl() : "")%>" /></td>
    	</tr>
    	<tr>
-   		<td><label for="wedding_date_desc">时间描述（比如：2013年11月24日中午11点半）：</label></td>
+   		<td><label for="wedding_date_desc">详细时间（比如：2013年11月24日中午11点半）：</label></td>
    		<td><input type="text" name="wedding_date_desc" id="wedding_date_desc" size="50"value="<%=(card != null ? card.getWeddingDateDesc() : "")%>" /></td>
    	</tr>
    	<tr>
    		<td><label for="place_name">酒店名称：</label></td>
-   		<td><input type="text" name="place_name" id="place_name" size="50" value="<%=(place != null ? place.getName() : "")%>" /></td>
+   		<td><input type="text" name="place_name" id="place_name" size="50" value="<%=(card != null ? card.getPlaceName() : "")%>" /></td>
    	</tr>
    	<tr>
    		<td><label for="place_address">酒店地址：</label></td>
-   		<td><input type="text" name="place_address" id="place_address" size="50" value="<%=(place != null ? place.getAddress() : "") %>" /></td>
+   		<td><input type="text" name="place_address" id="place_address" size="50" value="<%=(card != null ? card.getPlaceAddress() : "") %>" /></td>
    	</tr>
    	<tr>
-   		<td><label for="place_url">酒店百度地图链接：</label></td>
-   		<td><input type="text" name="place_url" id="place_url" size="50" value="<%=(place != null ? place.getUrl(): "") %>" /></td>
+   		<td><label for="place_longitude">酒店地点经度：</label></td>
+   		<td><input type="text" name="place_longitude" id="place_longitude" size="50" value="<%=(card != null ? card.getPlaceLongitude(): "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="place_latitude">酒店地点纬度：</label></td>
+   		<td><input type="text" name="place_latitude" id="place_latitude" size="50" value="<%=(card != null ? card.getPlaceLatitude(): "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="place_phone">酒店电话：</label></td>
-   		<td><input type="text" name="place_phone" id="place_phone" size="50" value="<%=(place != null ? place.getPhone() : "") %>" /></td>
+   		<td><input type="text" name="place_phone" id="place_phone" size="50" value="<%=(card != null ? card.getPlacePhone() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="note">请贴内容：</label></td>
    		<td><textarea name="note" id="note" cols="45" rows="6"><%=(card != null ? card.getNote() : "") %></textarea></td>
    	</tr>
    	<tr>
-   		<td><label for="template_id">模板：</label></td>
-   		<td><select name="template_id" id="template_id">
-<%
-for (Asset a : templates) {
-%>
-			<option value="<%=a.getAssetId() %>" selected="selected"><%=a.getTitle() %></option>
-<%
-}
-%>
-			</select></td>
+   		<td><label for="music_url">背景音乐文件名：</label></td>
+   		<td><input type="text" name="music_url" id="music_url" size="50" value="<%=(card != null ? card.getMusicUrl(): "") %>" /></td>
    	</tr>
    	<tr>
-   		<td><label for="music_id">音乐歌曲：</label></td>
-   		<td><select name="music_id" id="music_id">
-<%
-for (Asset a : musics) {
-%>
-			<option value="<%=a.getAssetId() %>" selected="selected"><%=a.getTitle() %></option>
-<%
-}
-%>
-			</select></td>
-   	</tr>
-   	<tr>
-   		<td><label for="video">视频链接：</label></td>
-   		<td><input type="text" name="video" id="video" size="50" value="<%=(card != null ? card.getVideo() : "") %>" /></td>
+   		<td><label for="video_url">视频链接：</label></td>
+   		<td><input type="text" name="video_url" id="video_url" size="50" value="<%=(card != null ? card.getVideoUrl() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="story">爱情故事：</label></td>
-   		<td><textarea name="story" id="story" cols="45" rows="8"><%=(card != null ? card.getNote() : "") %></textarea></td>
+   		<td><textarea name="story" id="story" cols="45" rows="8"><%=(card != null ? card.getStory() : "") %></textarea></td>
    	</tr>
    	<tr>
-   		<td><label for="agent_id">婚庆公司</label></td>
-   		<td><select name="agent_id" id="agent_id">
-<%
-for (Agent a : agents) {
-%>
-			<option value="<%=a.getAgentId() %>" selected="selected"><%=a.getName() %></option>
-<%
-}
-%>
-			</select></td>
+   		<td><label for="agent_name">婚庆或代理公司名称</label></td>
+   		<td><input type="text" name="agent_name" id="agent_name" size="50" value="<%=(card != null ? card.getAgentName() : "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="agent_weixin">婚庆或代理公司微信</label></td>
+   		<td><input type="text" name="agent_weixin" id="agent_weixin" size="50" value="<%=(card != null ? card.getAgentWeixin() : "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="agent_website">婚庆或代理公司网址</label></td>
+   		<td><input type="text" name="agent_website" id="agent_website" size="50" value="<%=(card != null ? card.getAgentWebsite() : "") %>" /></td>
+   	</tr>
+   	
+   	<!-- photos -->
+   	<tr>
+   		<td><label for="p1">照片1</label></td>
+   		<td><input type="text" name="p1" id="p1" size="50" value="<%=(photos != null && photos.size() > 0 ? photos.get(0).getUrl() : "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="p2">照片2</label></td>
+   		<td><input type="text" name="p2" id="p2" size="50" value="<%=(photos != null && photos.size() > 1 ? photos.get(1).getUrl() : "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="p3">照片3</label></td>
+   		<td><input type="text" name="p3" id="p3" size="50" value="<%=(photos != null && photos.size() > 2 ? photos.get(2).getUrl() : "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="p4">照片4</label></td>
+   		<td><input type="text" name="p4" id="p4" size="50" value="<%=(photos != null && photos.size() > 3 ? photos.get(3).getUrl() : "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="p5">照片5</label></td>
+   		<td><input type="text" name="p5" id="p5" size="50" value="<%=(photos != null && photos.size() > 4 ? photos.get(4).getUrl() : "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="p6">照片6</label></td>
+   		<td><input type="text" name="p6" id="p6" size="50" value="<%=(photos != null && photos.size() > 5 ? photos.get(5).getUrl() : "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="p7">照片7</label></td>
+   		<td><input type="text" name="p7" id="p7" size="50" value="<%=(photos != null && photos.size() > 6 ? photos.get(6).getUrl() : "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="p8">照片8</label></td>
+   		<td><input type="text" name="p8" id="p8" size="50" value="<%=(photos != null && photos.size() > 7 ? photos.get(7).getUrl() : "") %>" /></td>
    	</tr>
     <tr>
    		<td></td>
@@ -149,4 +151,5 @@ for (Agent a : agents) {
     </form>
 </div>
 </body>
+<script src="scripts/library/jquery-1.8.3.min.js"></script>
 </html>

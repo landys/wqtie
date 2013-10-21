@@ -7,11 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>微请帖管理</title>
-<!--
-<link rel="stylesheet" href="css/public.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="css/seal.css" type="text/css" media="screen" />
--->
-<script src="js/library/jquery-1.8.3.min.js"></script>
 </head>
 
 <body>
@@ -44,7 +39,7 @@ if (nCards > 0) {
    		<td><label>新娘</label></td>
    		<td><label>婚期</label></td>
    		<td><label>酒店</label></td>
-   		<td colspan="4"><label>操作</label></td>
+   		<td colspan="3"><label>操作</label></td>
    	</tr>
 <%
 	for (WeddingCard card : cards) {
@@ -54,10 +49,10 @@ if (nCards > 0) {
    		<td><label><%=card.getGroom() %></label></td>
    		<td><label><%=card.getBride() %></label></td>
    		<td><label><%=card.getWeddingDateDesc() %></label></td>
-   		<td><label><%=card.getPlace() != null ? card.getPlace().getName() : "" %></label></td>
+   		<td><label><%=card.getPlaceName() %></label></td>
    		<td><a href="card.html?cid=<%=card.getCardId()%>">预览</a></td>
    		<td><a href="edit_card.html?cid=<%=card.getCardId()%>">编辑信息</a></td>
-   		<td><a href="edit_photos.html?cid=<%=card.getCardId()%>">编辑照片</a></td>
+   		<!-- <td><a href="edit_photos.html?cid=<%=card.getCardId()%>">编辑照片</a></td>-->
    		<td><a href="delete_card.html?cid=<%=card.getCardId()%>">删除</a></td>
    	</tr>
 <%
@@ -69,4 +64,5 @@ if (nCards > 0) {
 %>
 </div>
 </body>
+<script src="http://lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
 </html>

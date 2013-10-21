@@ -4,7 +4,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>微请帖登录</title>
-<script src="js/library/jquery-1.8.3.min.js"></script>
 </head>
 
 <body>
@@ -35,4 +34,5 @@ if (errorMessage != null && errorMessage.trim().length() > 0) {
     </form>
 </div>
 </body>
+<script src="http://lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
 </html>

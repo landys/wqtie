@@ -5,9 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.wqt.model.Agent;
-import com.wqt.model.Asset;
-import com.wqt.model.Place;
 import com.wqt.model.User;
 import com.wqt.model.WeddingCard;
 import com.wqt.util.AppException;
@@ -53,41 +50,82 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 		}
 
 		WeddingCard t = new WeddingCard(rs.getLong("cardId"),
-				rs.getDate("createDate"), rs.getString("groom"),
-				rs.getString("bride"), rs.getString("title"),
-				rs.getDate("weddingDate"), rs.getString("weddingDateDesc"),
-				rs.getString("phone"), rs.getString("note"),
-				rs.getString("story"), rs.getString("video"),
-				rs.getInt("status"), new User(rs.getLong("userId")), new Place(
-						rs.getLong("placeId")),
-				new Agent(rs.getLong("agentId")), new Asset(
-						rs.getLong("templateId")), new Asset(
-						rs.getLong("musicId")), null, null);
+				rs.getString("groom"), rs.getString("bride"),
+				rs.getString("title"), rs.getDate("weddingDate"),
+				rs.getString("weddingDateDesc"), rs.getString("phone"),
+				rs.getString("weixin"), rs.getString("note"),
+				rs.getString("story"), rs.getString("videoUrl"),
+				rs.getString("musicUrl"), rs.getString("coverPhotoUrl"),
+				rs.getString("placeName"), rs.getString("placeAddress"),
+				rs.getString("placeUrl"), rs.getString("placePhone"),
+				rs.getString("placeLongitude"), rs.getString("placeLatitude"),
+				rs.getString("agentName"), rs.getString("agentPhone"),
+				rs.getString("agentWeixin"), rs.getString("agentQcodePath"),
+				rs.getString("agentWebsite"), rs.getString("agentWeibo"),
+				rs.getInt("status"), rs.getDate("createDate"), new User(
+						rs.getLong("userId")), null, null);
 
 		return t;
 	}
 
+	/*
+	 * WeddingCardUpdate=update tbl_wedding_card set userId=?, groom=?, bride=?,
+	 * title=?, weddingDate=?, \ weddingDateDesc=?, phone=?, weixin=?, note=?,
+	 * story=?, videoUrl=?, musicUrl=?, coverPhotoUrl=?, placeName=?, \
+	 * placeAddress=?, placeUrl=?, placePhone=?, agentName=?, agentPhone=?,
+	 * agentWeixin=?, agentQcodePath=?, agentWebSite=?, \ agentWeibo=?,
+	 * status=?, createDate=? where cardId=?;
+	 */
 	@Override
 	protected List<Object> convertToParaListWithoutId(WeddingCard t) {
 		List<Object> paras = new ArrayList<Object>();
 		paras.add(t.getUser() != null ? t.getUser().getUserId() : null);
-		paras.add(t.getCreateDate());
 		paras.add(t.getGroom());
 		paras.add(t.getBride());
 		paras.add(t.getTitle());
 		paras.add(t.getWeddingDate());
 		paras.add(t.getWeddingDateDesc());
 		paras.add(t.getPhone());
+		paras.add(t.getWeixin());
 		paras.add(t.getNote());
 		paras.add(t.getStory());
-		paras.add(t.getVideo());
+		paras.add(t.getVideoUrl());
+		paras.add(t.getMusicUrl());
+		paras.add(t.getCoverPhotoUrl());
+		paras.add(t.getPlaceName());
+		paras.add(t.getPlaceAddress());
+		paras.add(t.getPlaceUrl());
+		paras.add(t.getPlacePhone());
+		paras.add(t.getPlaceLongitude());
+		paras.add(t.getPlaceLatitude());
+		paras.add(t.getAgentName());
+		paras.add(t.getAgentPhone());
+		paras.add(t.getAgentWeixin());
+		paras.add(t.getAgentQcodePath());
+		paras.add(t.getAgentWebsite());
+		paras.add(t.getAgentWeibo());
 		paras.add(t.getStatus());
-		paras.add(t.getPlace() != null ? t.getPlace().getPlaceId() : null);
-		paras.add(t.getAgent() != null ? t.getAgent().getAgentId() : null);
-		paras.add(t.getTemplate() != null ? t.getTemplate().getAssetId() : null);
-		paras.add(t.getMusic() != null ? t.getMusic().getAssetId() : null);
+		paras.add(t.getCreateDate());
 
 		return paras;
 	}
 
+	// public List<Agent> findAgentsInIds(List<Long> agentIds) throws
+	// AppException {
+	// String namePlace = "?";
+	// int n = agentIds.size();
+	// for (int i = 0; i < n - 1; i++) {
+	// namePlace += ", ?";
+	// }
+	//
+	// String sql = dbProps.getProperty("AgentFindAllInIds");
+	// sql = sql.replaceFirst("\\?", namePlace);
+	//
+	// List<Object> paras = new ArrayList<Object>();
+	// for (long agentId : agentIds) {
+	// paras.add(agentId);
+	// }
+	//
+	// return execFindObjects(sql, paras);
+	// }
 }

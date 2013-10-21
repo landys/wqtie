@@ -39,7 +39,7 @@ public class DbSupport {
 
 	private static final Logger LOG = Logger.getLogger(DbSupport.class);
 
-//	private void initConnection() throws AppException {
+//	protected void initConnection() throws AppException {
 //		String host = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_ADDR_SQL_IP);
 //		String port = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_ADDR_SQL_PORT);
 //		String username = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_AK);
@@ -63,7 +63,7 @@ public class DbSupport {
 //		}
 //	}
 	
-	private void initConnection() throws AppException {
+	protected void initConnection() throws AppException {
 		String host = "w.rdc.sae.sina.com.cn";
 		String port = "3307";
 		String username = SaeUserInfo.getAccessKey();
@@ -88,10 +88,10 @@ public class DbSupport {
 	}
 	
 
-	public void initConnection(int debug) throws AppException {
+	protected void initConnection(int debug) throws AppException {
 		// native connect to database
 		String driveName = "org.gjt.mm.mysql.Driver";
-		String url = "jdbc:mysql://localhost:3306/weiqingtie";
+		String url = "jdbc:mysql://localhost:3306/app_wqtphp";
 		String username = "root";
 		String password = "654321";
 		try {

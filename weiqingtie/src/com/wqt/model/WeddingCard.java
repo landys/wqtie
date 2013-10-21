@@ -2,6 +2,7 @@ package com.wqt.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Jinde
@@ -9,8 +10,6 @@ import java.util.Date;
  */
 public class WeddingCard extends BaseObject {
 	private long cardId;
-
-	private Date createDate;
 
 	private String groom;
 
@@ -24,27 +23,51 @@ public class WeddingCard extends BaseObject {
 
 	private String phone;
 
+	private String weixin;
+
 	private String note;
 
 	private String story;
 
+	private String videoUrl;
+
+	private String musicUrl;
+
+	private String coverPhotoUrl;
+
+	private String placeName;
+
+	private String placeAddress;
+
+	private String placeUrl;
+
+	private String placePhone;
+
+	private String placeLongitude;
+
+	private String placeLatitude;
+
+	private String agentName;
+
+	private String agentPhone;
+
+	private String agentWeixin;
+
+	private String agentQcodePath;
+
+	private String agentWebsite;
+
+	private String agentWeibo;
+
 	private int status;
+
+	private Date createDate;
 
 	private User user;
 
-	private Place place;
+	private List<Photo> photos;
 
-	private Agent agent;
-
-	private Asset template;
-
-	private Asset music;
-
-	private String video;
-
-	private ArrayList<Asset> photos;
-
-	private ArrayList<Feedback> feedbacks;
+	private List<Feedback> feedbacks;
 
 	public WeddingCard() {
 		super();
@@ -57,30 +80,45 @@ public class WeddingCard extends BaseObject {
 		this.cardId = cardId;
 	}
 
-	public WeddingCard(long cardId, Date createDate, String groom,
-			String bride, String title, Date weddingDate,
-			String weddingDateDesc, String phone, String note, String story,
-			String video, int status, User user, Place place, Agent agent,
-			Asset template, Asset music, ArrayList<Asset> photos,
+	public WeddingCard(long cardId, String groom, String bride, String title,
+			Date weddingDate, String weddingDateDesc, String phone,
+			String weixin, String note, String story, String videoUrl,
+			String musicUrl, String coverPhotoUrl, String placeName,
+			String placeAddress, String placeUrl, String placePhone,
+			String placeLongitude, String placeLatitude, String agentName,
+			String agentPhone, String agentWeixin, String agentQcodePath,
+			String agentWebsite, String agentWeibo, int status,
+			Date createDate, User user, ArrayList<Photo> photos,
 			ArrayList<Feedback> feedbacks) {
 		super();
 		this.cardId = cardId;
-		this.createDate = createDate;
 		this.groom = groom;
 		this.bride = bride;
 		this.title = title;
 		this.weddingDate = weddingDate;
 		this.weddingDateDesc = weddingDateDesc;
 		this.phone = phone;
+		this.weixin = weixin;
 		this.note = note;
 		this.story = story;
-		this.video = video;
+		this.videoUrl = videoUrl;
+		this.musicUrl = musicUrl;
+		this.coverPhotoUrl = coverPhotoUrl;
+		this.placeName = placeName;
+		this.placeAddress = placeAddress;
+		this.placeUrl = placeUrl;
+		this.placePhone = placePhone;
+		this.placeLongitude = placeLongitude;
+		this.placeLatitude = placeLatitude;
+		this.agentName = agentName;
+		this.agentPhone = agentPhone;
+		this.agentWeixin = agentWeixin;
+		this.agentQcodePath = agentQcodePath;
+		this.agentWebsite = agentWebsite;
+		this.agentWeibo = agentWeibo;
 		this.status = status;
+		this.createDate = createDate;
 		this.user = user;
-		this.place = place;
-		this.agent = agent;
-		this.template = template;
-		this.music = music;
 		this.photos = photos;
 		this.feedbacks = feedbacks;
 	}
@@ -91,14 +129,6 @@ public class WeddingCard extends BaseObject {
 
 	public void setCardId(long cardId) {
 		this.cardId = cardId;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
 	}
 
 	public String getGroom() {
@@ -149,6 +179,14 @@ public class WeddingCard extends BaseObject {
 		this.phone = phone;
 	}
 
+	public String getWeixin() {
+		return weixin;
+	}
+
+	public void setWeixin(String weixin) {
+		this.weixin = weixin;
+	}
+
 	public String getNote() {
 		return note;
 	}
@@ -157,68 +195,132 @@ public class WeddingCard extends BaseObject {
 		this.note = note;
 	}
 
-	public User getUser() {
-		return user;
+	public String getStory() {
+		return story;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setStory(String story) {
+		this.story = story;
 	}
 
-	public Place getPlace() {
-		return place;
+	public String getVideoUrl() {
+		return videoUrl;
 	}
 
-	public void setPlace(Place place) {
-		this.place = place;
+	public void setVideoUrl(String videoUrl) {
+		this.videoUrl = videoUrl;
 	}
 
-	public Agent getAgent() {
-		return agent;
+	public String getMusicUrl() {
+		return musicUrl;
 	}
 
-	public void setAgent(Agent agent) {
-		this.agent = agent;
+	public void setMusicUrl(String musicUrl) {
+		this.musicUrl = musicUrl;
 	}
 
-	public Asset getTemplate() {
-		return template;
+	public String getCoverPhotoUrl() {
+		return coverPhotoUrl;
 	}
 
-	public void setTemplate(Asset template) {
-		this.template = template;
+	public void setCoverPhotoUrl(String coverPhotoUrl) {
+		this.coverPhotoUrl = coverPhotoUrl;
 	}
 
-	public Asset getMusic() {
-		return music;
+	public String getPlaceName() {
+		return placeName;
 	}
 
-	public void setMusic(Asset music) {
-		this.music = music;
+	public void setPlaceName(String placeName) {
+		this.placeName = placeName;
 	}
 
-	public String getVideo() {
-		return video;
+	public String getPlaceAddress() {
+		return placeAddress;
 	}
 
-	public void setVideo(String video) {
-		this.video = video;
+	public void setPlaceAddress(String placeAddress) {
+		this.placeAddress = placeAddress;
 	}
 
-	public ArrayList<Asset> getPhotos() {
-		return photos;
+	public String getPlaceUrl() {
+		return placeUrl;
 	}
 
-	public void setPhotos(ArrayList<Asset> photos) {
-		this.photos = photos;
+	public void setPlaceUrl(String placeUrl) {
+		this.placeUrl = placeUrl;
 	}
 
-	public ArrayList<Feedback> getFeedbacks() {
-		return feedbacks;
+	public String getPlacePhone() {
+		return placePhone;
 	}
 
-	public void setFeedbacks(ArrayList<Feedback> feedbacks) {
-		this.feedbacks = feedbacks;
+	public void setPlacePhone(String placePhone) {
+		this.placePhone = placePhone;
+	}
+
+	public String getPlaceLongitude() {
+		return placeLongitude;
+	}
+
+	public void setPlaceLongitude(String placeLongitude) {
+		this.placeLongitude = placeLongitude;
+	}
+
+	public String getPlaceLatitude() {
+		return placeLatitude;
+	}
+
+	public void setPlaceLatitude(String placeLatitude) {
+		this.placeLatitude = placeLatitude;
+	}
+
+	public String getAgentName() {
+		return agentName;
+	}
+
+	public void setAgentName(String agentName) {
+		this.agentName = agentName;
+	}
+
+	public String getAgentPhone() {
+		return agentPhone;
+	}
+
+	public void setAgentPhone(String agentPhone) {
+		this.agentPhone = agentPhone;
+	}
+
+	public String getAgentWeixin() {
+		return agentWeixin;
+	}
+
+	public void setAgentWeixin(String agentWeixin) {
+		this.agentWeixin = agentWeixin;
+	}
+
+	public String getAgentQcodePath() {
+		return agentQcodePath;
+	}
+
+	public void setAgentQcodePath(String agentQcodePath) {
+		this.agentQcodePath = agentQcodePath;
+	}
+
+	public String getAgentWebsite() {
+		return agentWebsite;
+	}
+
+	public void setAgentWebsite(String agentWebsite) {
+		this.agentWebsite = agentWebsite;
+	}
+
+	public String getAgentWeibo() {
+		return agentWeibo;
+	}
+
+	public void setAgentWeibo(String agentWeibo) {
+		this.agentWeibo = agentWeibo;
 	}
 
 	public int getStatus() {
@@ -229,12 +331,36 @@ public class WeddingCard extends BaseObject {
 		this.status = status;
 	}
 
-	public String getStory() {
-		return story;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setStory(String story) {
-		this.story = story;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
+
+	public List<Feedback> getFeedbacks() {
+		return feedbacks;
+	}
+
+	public void setFeedbacks(List<Feedback> feedbacks) {
+		this.feedbacks = feedbacks;
 	}
 
 }

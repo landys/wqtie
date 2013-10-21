@@ -130,6 +130,15 @@
 		</init-param>
 		
 		<init-param>
+			<param-name>add_feedbackCommand</param-name>
+			<param-value>com.wqt.web.command.AddFeedbackCommand</param-value>
+		</init-param>
+		<init-param>
+			<param-name>add_feedbackNeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+		<init-param>
 			<param-name>photosPage</param-name>
 			<param-value>/jsp/card/t2_photos.jsp</param-value>
 		</init-param>

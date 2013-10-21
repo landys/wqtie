@@ -92,7 +92,7 @@ public abstract class AbstractBaseDao<T> implements IBaseDao<T> {
 	public void delete(long id) throws AppException {
 		DbSupport dbSupport = dbSupportFactory.getDbSupport();
 
-		String sql = dbProps.getProperty(getSqlPropPrefix() + "Detete");
+		String sql = dbProps.getProperty(getSqlPropPrefix() + "Delete");
 
 		try {
 			List<Object> paras = new ArrayList<Object>();
