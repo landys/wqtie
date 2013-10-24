@@ -9,6 +9,7 @@
 <html>
 <head>
 <title>请贴编辑</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 
 <body>
@@ -58,6 +59,10 @@ if (card != null) {
    		<td><input type="text" name="cover_photo_url" id="cover_photo_url" size="50" value="<%=(card != null ? card.getCoverPhotoUrl() : "")%>" /></td>
    	</tr>
    	<tr>
+   		<td><label for="page_photo_url">其他页照片文件名：</label></td>
+   		<td><input type="text" name="page_photo_url" id="page_photo_url" size="50" value="<%=(card != null ? card.getPagePhotoUrl() : "")%>" /></td>
+   	</tr>
+   	<tr>
    		<td><label for="wedding_date_desc">详细时间（比如：2013年11月24日中午11点半）：</label></td>
    		<td><input type="text" name="wedding_date_desc" id="wedding_date_desc" size="50"value="<%=(card != null ? card.getWeddingDateDesc() : "")%>" /></td>
    	</tr>
@@ -104,6 +109,10 @@ if (card != null) {
    	<tr>
    		<td><label for="agent_weixin">婚庆或代理公司微信</label></td>
    		<td><input type="text" name="agent_weixin" id="agent_weixin" size="50" value="<%=(card != null ? card.getAgentWeixin() : "") %>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="agent_qcode_path">婚庆或代理公司微信QR图文件名</label></td>
+   		<td><input type="text" name="agent_qcode_path" id="agent_qcode_path" size="50" value="<%=(card != null ? card.getAgentQcodePath() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="agent_website">婚庆或代理公司网址</label></td>

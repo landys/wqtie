@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>微请帖管理</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 
 <body>
@@ -53,7 +54,7 @@ if (nCards > 0) {
    		<td><a href="card.html?cid=<%=card.getCardId()%>">预览</a></td>
    		<td><a href="edit_card.html?cid=<%=card.getCardId()%>">编辑信息</a></td>
    		<!-- <td><a href="edit_photos.html?cid=<%=card.getCardId()%>">编辑照片</a></td>-->
-   		<td><a href="delete_card.html?cid=<%=card.getCardId()%>">删除</a></td>
+   		<td><a href="#" onclick="onDelete();">删除</a></td>
    	</tr>
 <%
 	}
@@ -65,4 +66,9 @@ if (nCards > 0) {
 </div>
 </body>
 <script src="http://lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+var onDelete = function() {
+	//delete_card.html?cid=card.getCardId()
+}
+</script>
 </html>

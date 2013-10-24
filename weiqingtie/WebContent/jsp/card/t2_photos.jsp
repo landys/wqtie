@@ -22,6 +22,7 @@ if (card != null) {
 <title><%=(card != null ? card.getTitle() : "")%></title>
 <link href="css/core.css" rel="stylesheet" />
 <link href="css/t2.css" rel="stylesheet" />
+<link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 
 <body title="<%=(card != null ? card.getTitle() : "")%>"

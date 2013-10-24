@@ -22,6 +22,7 @@
 <title><%=(card != null ? card.getTitle() : "")%></title>
 <link href="css/core.css" rel="stylesheet" />
 <link href="css/t2.css" rel="stylesheet" />
+<link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 
 <body title="<%=(card != null ? card.getTitle() : "")%>"
@@ -34,7 +35,7 @@
 				<a href="card.html?cid=<%=cardId%>" 
 					style="width: 50px; border-radius: 10px; margin-left: 10px; background: #EF1140; display: block; float: left; visibility: hidden">返回</a><%=(card != null ? card.getTitle() : "")%>
 				<a href="javascript:void(0);" id="music" onclick="stop();"><img
-					id="music_button" style="float: right" src="images/music_stop.png"></a>
+					id="btnPlay" style="float: right" src="images/stop.png"></a>
 				<audio id="video" autoplay="autoplay" loop>
 				    <source src="<%=card != null ? AppUtils.AssetSitePrefix + card.getMusicUrl() : "" %>" id="video_url_mp3" type="audio/mpeg">
 				</audio>
@@ -42,13 +43,13 @@
 				    var isaoto = 0;
 				    function stop(){
 				        var myVideo = document.getElementById("video");
-				        var button = document.getElementById("music_button");
+				        var button = document.getElementById("btnPlay");
 				        if(!myVideo.paused){
 				            myVideo.pause();
-				            button.src = "images/music_but.png";
+				            button.src = "images/start.png";
 				        } else {
 				            myVideo.play();
-				            button.src = "images/music_stop.png";
+				            button.src = "images/stop.png";
 				        }
 				    }
 				    function play(){
@@ -111,8 +112,14 @@
 					target="_blank"><%=(card != null ? card.getAgentName() : "")%></a>”幸福提供<br> 关注微信公众账号“<span
 					class="about_color"><%=(card != null ? card.getAgentWeixin() : "")%></span>”获取专属微信喜帖 
 			</p>
-			<!-- <a class="about_color" href="http://weiqingtie.com/" target="_blank"><img
-				style="width: 80px;" src="images/weixin.jpg"></a> -->
+<%
+if (card != null && !AppUtils.checkEmptyString(card.getAgentQcodePath())) {
+%>
+			<a class="about_color" href="#" target="_blank"><img
+				style="width: 80px;" src="<%= AppUtils.AssetSitePrefix + card.getAgentQcodePath()%>"></a>
+<%
+}
+%>
 		</div>
 	</div>
 </body>

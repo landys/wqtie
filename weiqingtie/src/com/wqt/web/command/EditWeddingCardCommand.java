@@ -76,12 +76,12 @@ public class EditWeddingCardCommand implements ICommand {
 		card.setGroom(request.getParameter("groom"));
 		card.setBride(request.getParameter("bride"));
 		card.setCoverPhotoUrl(request.getParameter("cover_photo_url"));
+		card.setPagePhotoUrl(request.getParameter("page_photo_url"));
 		//card.setWeddingDate(AppUtils.simpleStringToDate(request.getParameter("wedding_date")));
 		card.setWeddingDateDesc(request.getParameter("wedding_date_desc"));
 		card.setPlaceName(request.getParameter("place_name"));
 		card.setPlaceAddress(request.getParameter("place_address"));
 		card.setPlacePhone(request.getParameter("place_phone"));
-		//card.setPlaceUrl(request.getParameter("place_url"));
 		card.setPlaceLongitude(request.getParameter("place_longitude"));
 		card.setPlaceLatitude(request.getParameter("place_latitude"));
 		card.setNote(request.getParameter("note"));
@@ -90,6 +90,7 @@ public class EditWeddingCardCommand implements ICommand {
 		card.setVideoUrl(request.getParameter("video_url"));
 		card.setAgentName(request.getParameter("agent_name"));
 		card.setAgentWeixin(request.getParameter("agent_weixin"));
+		card.setAgentQcodePath(request.getParameter("agent_qcode_path"));
 		card.setAgentWebsite(request.getParameter("agent_website"));
 		card.setCreateDate(new Date());
 

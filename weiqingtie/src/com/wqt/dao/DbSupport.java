@@ -163,7 +163,7 @@ public class DbSupport {
 	private void prepareStatement(final String sql, final List<Object> paras,
 			final boolean returnKey) throws AppException {
 		if (conn == null) {
-			initConnection();
+			initConnection(1);
 		}
 
 		try {

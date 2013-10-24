@@ -34,12 +34,14 @@ public class WeddingCardService {
 
 		try {
 			card = cardDao.find(cardId);
-			List<Photo> photos = photoDao.findPhotosByCardId(card.getCardId());
-			card.setPhotos(photos);
-			
-			if (photos != null && photos.size() > 0) {
-				for (Photo photo : photos) {
-					photo.setWeddingCard(card);
+			if (card != null) {
+				List<Photo> photos = photoDao.findPhotosByCardId(card.getCardId());
+				card.setPhotos(photos);
+				
+				if (photos != null && photos.size() > 0) {
+					for (Photo photo : photos) {
+						photo.setWeddingCard(card);
+					}
 				}
 			}
 		} catch (AppException e) {

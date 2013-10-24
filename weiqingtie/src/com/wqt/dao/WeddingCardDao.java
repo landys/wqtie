@@ -56,26 +56,19 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 				rs.getString("weixin"), rs.getString("note"),
 				rs.getString("story"), rs.getString("videoUrl"),
 				rs.getString("musicUrl"), rs.getString("coverPhotoUrl"),
-				rs.getString("placeName"), rs.getString("placeAddress"),
-				rs.getString("placeUrl"), rs.getString("placePhone"),
-				rs.getString("placeLongitude"), rs.getString("placeLatitude"),
-				rs.getString("agentName"), rs.getString("agentPhone"),
-				rs.getString("agentWeixin"), rs.getString("agentQcodePath"),
-				rs.getString("agentWebsite"), rs.getString("agentWeibo"),
-				rs.getInt("status"), rs.getDate("createDate"), new User(
-						rs.getLong("userId")), null, null);
+				rs.getString("pagePhotoUrl"), rs.getString("placeName"),
+				rs.getString("placeAddress"), rs.getString("placeUrl"),
+				rs.getString("placePhone"), rs.getString("placeLongitude"),
+				rs.getString("placeLatitude"), rs.getString("agentName"),
+				rs.getString("agentPhone"), rs.getString("agentWeixin"),
+				rs.getString("agentQcodePath"), rs.getString("agentWebsite"),
+				rs.getString("agentWeibo"), rs.getInt("status"),
+				rs.getDate("createDate"), new User(rs.getLong("userId")), null,
+				null);
 
 		return t;
 	}
 
-	/*
-	 * WeddingCardUpdate=update tbl_wedding_card set userId=?, groom=?, bride=?,
-	 * title=?, weddingDate=?, \ weddingDateDesc=?, phone=?, weixin=?, note=?,
-	 * story=?, videoUrl=?, musicUrl=?, coverPhotoUrl=?, placeName=?, \
-	 * placeAddress=?, placeUrl=?, placePhone=?, agentName=?, agentPhone=?,
-	 * agentWeixin=?, agentQcodePath=?, agentWebSite=?, \ agentWeibo=?,
-	 * status=?, createDate=? where cardId=?;
-	 */
 	@Override
 	protected List<Object> convertToParaListWithoutId(WeddingCard t) {
 		List<Object> paras = new ArrayList<Object>();
@@ -92,6 +85,7 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 		paras.add(t.getVideoUrl());
 		paras.add(t.getMusicUrl());
 		paras.add(t.getCoverPhotoUrl());
+		paras.add(t.getPagePhotoUrl());
 		paras.add(t.getPlaceName());
 		paras.add(t.getPlaceAddress());
 		paras.add(t.getPlaceUrl());

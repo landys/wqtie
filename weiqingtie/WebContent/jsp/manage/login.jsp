@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>微请帖登录</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 
 <body>

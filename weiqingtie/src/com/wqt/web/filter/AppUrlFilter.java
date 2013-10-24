@@ -30,7 +30,7 @@ public final class AppUrlFilter implements Filter {
         String url = httpRequest.getRequestURL().toString();
         RequestDispatcher dispatcher = null;
         String urlLowerCase = url.toLowerCase();
-        if ((urlLowerCase.startsWith("http://m.weiyaoqing.") || urlLowerCase.startsWith("http://wap.weiyaoqing."))
+        if ((urlLowerCase.startsWith("http://m.vqingtie.") || urlLowerCase.startsWith("http://wap.vqingtie."))
                 && (urlLowerCase.trim().endsWith(".wml") || urlLowerCase.trim().endsWith(".jsp")
                         || urlLowerCase.trim().endsWith("/"))) {
             dispatcher = request.getRequestDispatcher("/wap"
