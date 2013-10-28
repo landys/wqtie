@@ -55,12 +55,91 @@
 		           <img src="<%= AppUtils.AssetSitePrefix + card.getPagePhotoUrl()%>" class="p_img"></img></div>
 		       <div class="t_nav">
 		           <ul>
-		               <li style="background-color: #cc9966"><p><a href="#">我要<br />签到</a></p></li>
-		               <li style="background-color: #ffcccc"><p><a href="#">爱的<br />相册</a></p></li>
-		               <li style="background-color: #cccc66"><p><a href="#">爱情<br />故事</a></p></li>
-		               <li style="background-color: #cc99cc"><p><a href="#">喜宴<br />地图</a></p></li>
+		               <li style="background-color: #cc9966"><p><a href="#" onclick="divClicked('divFeedback');">我要<br />签到</a></p></li>
+		               <li style="background-color: #ffcccc"><p><a href="#" onclick="divClicked('divPhotos');">爱的<br />相册</a></p></li>
+		               <li style="background-color: #cccc66"><p><a href="#" onclick="divClicked('divStory');">爱情<br />故事</a></p></li>
+		               <li style="background-color: #cc99cc"><p><a href="#" onclick="divClicked('divPlace');">喜宴<br />地图</a></p></li>
 		           </ul>
 		       </div>
+		       
+		       <div id="divFeedback" class="guests_box" style="display:none">
+					<form action="add_feedback.html?cid=<%=cardId%>"
+						method="post">
+						<h3 class="interactive01" style="margin-bottom: 10px;">贵宾签到</h3>
+						<p id="errorMessage" style="color:black; display:none"></p>
+						<div>
+							<input id="guest" name="guest" type="text"
+								class="scene_txt scene_txt01" placeholder="请输入您的大名">
+						</div>
+						<div style="margin-top: 10px;">
+							<input type="text" id="phone" name="phone" class="scene_txt scene_txt01"
+								placeholder="请输入您的手机号">
+						</div>
+						<span class="interactive_span">
+						<label for="attendees">参加人数：</label>&nbsp;&nbsp;
+						<select id="attendees" name="attendees">
+							<option value="0">0</option>
+							<option value="1" selected="selected">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+						</span>
+						<div>
+							<textarea id="wish" name="wish" class="scene_area" placeholder="送祝福"></textarea>
+						</div>
+						<div>
+							<input id="submit" name="submit" type="button" value="确定" class="sceneBtn" onclick="onSubmitFeedback(<%=cardId%>);"/>
+						</div>
+					</form>
+				</div>
+				
+				<div id="divPhotos" style="display:none">
+		<%
+		if (photos != null && photos.size() > 0) {
+		%>
+					<ul>
+		<%
+			for (Photo photo : photos) {
+				if (photo != null && !AppUtils.checkEmptyString(photo.getUrl())) {
+		%>
+						<li style="background: lightgray;"><img src="<%=AppUtils.AssetSitePrefix + photo.getUrl() %>" width="100%"></li>
+		<%
+				}
+			}
+		%>
+					</ul>
+		<%
+		}
+		%>
+				</div>
+				
+				<div id="divStory" style="display:none">
+					<p class="location_pic">
+						爱情<br>故事
+					</p>
+					<div class="location_main">
+						<p style="text-align: left">
+							<%=card != null ? card.getStory() : "" %>
+						</p>
+					</div>
+				</div>
+			
+				<div id="divPlace" style="display:none">
+					<div id="dituContent"
+						style="width: 100%; margin: auto; height: 300px; border: 1px solid rgb(255, 0, 0); overflow: hidden; position: relative; z-index: 0; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;">
+						<!-- <div style="width:697px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>-->
+					</div>
+					<p>
+						<a href="http://api.map.baidu.com/marker?location=<%=card!=null ? card.getPlaceLatitude() : ""%>,<%=card!=null ? card.getPlaceLongitude() : ""%>&title=<%=card!=null ? card.getPlaceName() : ""%>&content=<%=card!=null ? card.getPlaceAddress() : ""%>&output=html">【点击进入百度地图导航】</a>
+					</p>
+				</div>
 			</div>
 			<div>
 				<div class="mypic" style="text-align: center;">
@@ -97,41 +176,13 @@ if (card != null && !AppUtils.checkEmptyString(card.getAgentQcodePath())) {
 	</div>
 </body>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
 <script src="js/wx.js"></script>
+<script src="js/qingtie.js"></script>
 <script type="text/javascript">
-	var isaoto = 0;
-	function stop(){
-	    var myVideo = document.getElementById("video");
-	    var button = document.getElementById("btnPlay");
-	    if(!myVideo.paused){
-	        myVideo.pause();
-	        button.src = "images/start.png";
-	    } else {
-	        myVideo.play();
-	        button.src = "images/stop.png";
-	    }
-	}
-	
-	function play(){
-	    var myVideo = document.getElementById("video");
-	    myVideo.play();
-	}
-	
-	document.ontouchstart = function(e){
-	    if(isaoto ==0){
-	        stop();
-	        isaoto = 1;
-	    }
-	}
-	
-    $(function(){
-        $('#begin').click(function(){
-            $(this).slideUp('slow');
-            var myVideo = document.getElementById("video");
-            myVideo.play();
-        });
-
-    });
+//标注点数组
+var markerArr = [{title:"<%=card!=null ? card.getPlaceName() : ""%>",content:"<%=card!=null ? card.getPlaceAddress() : ""%>",point:"<%=card!=null ? card.getPlaceLongitude() : ""%>|<%=card!=null ? card.getPlaceLatitude() : ""%>",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+	 ];
+initMap(<%=card!=null ? card.getPlaceLongitude() : ""%>, <%=card!=null ? card.getPlaceLatitude() : ""%>);//创建和初始化地图
 </script>
 </html>
