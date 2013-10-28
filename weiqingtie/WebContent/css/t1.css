@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body{
-	background-image:url(../images/p2r.jpg);
+	background-image:url(../images/r2pl.jpg);
 	background-size: 100% 100%;
 }
 .t{
@@ -25,80 +25,36 @@ body{
 	height:30px;
 	line-height:30px;
 }
-.t_bg{
-        width:304px;
-        height:356px;
-        background:url(../images/t2_bg1.jpg) no-repeat; 
-        background-size: 100% 100%;
+.p_img {
+	width:304px;
+    height:auto;
 }
 
-.t_nav_a li{
+.t_nav{
+	height:76px;
+	width:304px;
+	margin:0 auto;
+}
+.t_nav ul li{
 	float:left;
-	margin-right:13px;
+	width:25%;
+	height:76px;
 }
-.t_nav_a{
-	margin-left:12px;
+.t_nav ul li p {
+	margin-top: 16px;
 }
-.t_nav_a li a{
+.t_nav ul li a{
+	height:100%;
+	line-height:22px;
 	display:block;
-	width:60px;
-	height:47px;
-	line-height:16px;
 	text-align:center;
-	font-size:14px;
-	padding-top:13px;
-	background-image:url(../images/red_circle.png);
-	background-size:100%;
+	font-size:20px;
 }
-.t_nav_a li a:hover{
+.t_nav .t_nav_none{
+	margin-right:0;
+}
+.t_nav ul li a:hover, .t_nav .stencil_current{
 	text-decoration:none;
-}
-.t_nav_a .a1{
-	margin-top:274px;
-}
-.t_nav_a .a2{
-	margin-top:259px;
-}
-.t_nav_a .a3{
-	margin-top:246px;
-}
-.t_nav_a .a4{
-	margin-top:231px;
-}
-.t_nav_b li{
-	float:left;
-}
-.t_nav_b .b1, .t_nav_b .b2, .t_nav_b .b3{
-	display:block;
-	height:61px;
-	position:absolute;
-	line-height:16px;
-	font-size:14px;
-	padding-top:14px;
-}
-.t_nav_b a:hover{
-	text-decoration:none;
-}
-.t_nav_b .b1{
-	background:url(../images/nav_bj01.jpg) no-repeat;
-	width:75px;
-	left:23px;
-	top:381px;
-	padding-left:32px;
-}
-.t_nav_b .b2{
-	left:109px;
-	top:360px;
-	width:81px;
-	padding-left:38px;
-	background:url(../images/nav_bj02.jpg) no-repeat;
-}
-.t_nav_b .b3{
-	left:203px;
-	top:335px;
-	width:79px;
-	padding-left:36px;
-	background:url(../images/nav_bj03.jpg) no-repeat;
 }
 
 

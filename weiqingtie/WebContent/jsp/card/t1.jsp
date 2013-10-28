@@ -21,25 +21,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><%=(card != null ? card.getTitle() : "")%></title>
 <link href="css/core.css" rel="stylesheet" />
-<link href="css/t2.css" rel="stylesheet" />
+<link href="css/t1.css" rel="stylesheet" />
 <link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 
 <body title="<%=(card != null ? card.getTitle() : "")%>"
 	icon="<%=card != null ? AppUtils.AssetSitePrefix + card.getCoverPhotoUrl() : "" %>"
-	link="<%=(AppUtils.getWebSiteUrl(request) + "t2.html?cid=" + cardId) %>"
+	link="<%=(AppUtils.getWebSiteUrl(request) + "t1.html?cid=" + cardId) %>"
 	desc="<%=(card != null ? card.getWeddingDateDesc() : "")%>&nbsp;<%=(card != null ? card.getPlaceAddress() : "")%>">
 	<div class="t" data-role="page">
 		<div data-role="content">
 			<div class="t_content">
 				<div class="t_top">
-					<a href="t2.html?cid=<%=cardId%>" 
+					<a href="t1.html?cid=<%=cardId%>" 
 						style="width: 50px; border-radius: 10px; margin-left: 10px; background: #EF1140; display: block; float: left; visibility: hidden">返回</a><%=(card != null ? card.getTitle() : "")%>
 					<a href="javascript:void(0);" id="music" onclick="stop();"><img
 						id="btnPlay" style="float: right" src="images/stop.png"></a>
-					<audio id="video" autoplay="autoplay" loop>
+					<!--  <audio id="video" autoplay="autoplay" loop>
 					    <source src="<%=card != null ? AppUtils.AssetSitePrefix + card.getMusicUrl() : "" %>" id="video_url_mp3" type="audio/mpeg">
-					</audio>
+					</audio>-->
 				</div>
 <%
 	if (card != null && !AppUtils.checkEmptyString(card.getVideoUrl())) {
@@ -51,20 +51,16 @@
 <%
 	}
 %>
-				<div class="t_bg">
-				<div class="t_nav">
-					<ul class="t_nav_a">
-						<li><a href="feedback.html?cid=<%=cardId%>" class="a1">我要<br />签到
-						</a></li>
-						<li><a href="photos.html?cid=<%=cardId%>" class="a2">爱的<br />相册
-						</a></li>
-						<li><a href="story.html?cid=<%=cardId%>" class="a3">爱情<br />故事
-						</a></li>
-						<li><a href="place.html?cid=<%=cardId%>" class="a4">喜宴<br />地图
-						</a></li>
-					</ul>
-				</div>
-				</div>
+				<div class="t_img">
+		           <img src="<%= AppUtils.AssetSitePrefix + card.getPagePhotoUrl()%>" class="p_img"></img></div>
+		       <div class="t_nav">
+		           <ul>
+		               <li style="background-color: #cc9966"><p><a href="#">我要<br />签到</a></p></li>
+		               <li style="background-color: #ffcccc"><p><a href="#">爱的<br />相册</a></p></li>
+		               <li style="background-color: #cccc66"><p><a href="#">爱情<br />故事</a></p></li>
+		               <li style="background-color: #cc99cc"><p><a href="#">喜宴<br />地图</a></p></li>
+		           </ul>
+		       </div>
 			</div>
 			<div>
 				<div class="mypic" style="text-align: center;">
@@ -101,6 +97,7 @@ if (card != null && !AppUtils.checkEmptyString(card.getAgentQcodePath())) {
 	</div>
 </body>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 <script src="js/wx.js"></script>
 <script type="text/javascript">
 	var isaoto = 0;

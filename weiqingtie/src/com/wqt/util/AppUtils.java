@@ -16,7 +16,8 @@ public class AppUtils {
 	
 	private static SimpleDateFormat onlyDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
-	public static final String AssetSitePrefix = "http://weiqingtie.u.qiniudn.com/";
+	public static final boolean DebugMode = true;
+	public static final String AssetSitePrefix = "images/";//"http://weiqingtie.u.qiniudn.com/";
 	
 	private static final Logger LOG = Logger.getLogger(AppUtils.class);
 

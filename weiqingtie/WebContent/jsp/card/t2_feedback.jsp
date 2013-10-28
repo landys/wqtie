@@ -27,12 +27,12 @@ if (card != null) {
 
 <body title="<%=(card != null ? card.getTitle() : "")%>"
 	icon="<%=card != null ? AppUtils.AssetSitePrefix + card.getCoverPhotoUrl() : "" %>"
-	link="<%=(AppUtils.getWebSiteUrl(request) + "card.html?cid=" + cardId) %>"
+	link="<%=(AppUtils.getWebSiteUrl(request) + "t2.html?cid=" + cardId) %>"
 	desc="<%=(card != null ? card.getWeddingDateDesc() : "")%>&nbsp;<%=(card != null ? card.getPlaceAddress() : "")%>">
 	<div class="t2">
 		<div class="t2_content">
 			<div class="t2_top">
-				<a href="card.html?cid=<%=cardId%>"
+				<a href="t2.html?cid=<%=cardId%>"
 					style="width: 50px; border-radius: 10px; margin-left: 10px; background: #EF1140; display: block; float: left;">返回</a><%=(card != null ? card.getTitle() : "")%>
 			</div>
 			<div class="t2_bg public_bg">
@@ -159,7 +159,7 @@ var onSubmitFeedback = function() {
 			if ($.trim(message) != "") {
 				if (message == "YES") {
 					window.alert("签到成功，感谢您的祝福！");
-					window.location.href = "card.html?cid=<%=cardId%>";
+					window.location.href = "t2.html?cid=<%=cardId%>";
 				} else {
 					showErrorMessage("签到失败，请检查网络！");
 				}

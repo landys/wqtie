@@ -51,10 +51,11 @@ if (nCards > 0) {
    		<td><label><%=card.getBride() %></label></td>
    		<td><label><%=card.getWeddingDateDesc() %></label></td>
    		<td><label><%=card.getPlaceName() %></label></td>
-   		<td><a href="card.html?cid=<%=card.getCardId()%>">预览</a></td>
+   		<td><a href="t1.html?cid=<%=card.getCardId()%>">预览1</a></td>
+   		<td><a href="t2.html?cid=<%=card.getCardId()%>">预览2</a></td>
    		<td><a href="edit_card.html?cid=<%=card.getCardId()%>">编辑信息</a></td>
    		<!-- <td><a href="edit_photos.html?cid=<%=card.getCardId()%>">编辑照片</a></td>-->
-   		<td><a href="#" onclick="onDelete();">删除</a></td>
+   		<!-- <td><a href="#" onclick="onDelete();">删除</a></td>-->
    	</tr>
 <%
 	}
@@ -65,7 +66,6 @@ if (nCards > 0) {
 %>
 </div>
 </body>
-<script src="http://lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
 var onDelete = function() {
 	//delete_card.html?cid=card.getCardId()

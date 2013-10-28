@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 //import com.baidu.bae.api.util.BaeEnv;
 import com.sina.sae.util.SaeUserInfo;
 import com.wqt.util.AppException;
+import com.wqt.util.AppUtils;
 
 /**
  * Thread unsafe.
@@ -163,7 +164,12 @@ public class DbSupport {
 	private void prepareStatement(final String sql, final List<Object> paras,
 			final boolean returnKey) throws AppException {
 		if (conn == null) {
-			initConnection(1);
+			if (AppUtils.DebugMode) {
+				initConnection(1);
+			}
+			else {
+				initConnection();
+			}
 		}
 
 		try {

@@ -55,11 +55,11 @@ if (card != null) {
    		<td><input type="text" name="bride" id="bride" size="50" value="<%=(card != null ? card.getBride() : "")%>" /></td>
    	</tr>
    	<tr>
-   		<td><label for="cover_photo_url">封面照片文件名：</label></td>
+   		<td><label for="cover_photo_url">图标照片文件名：</label></td>
    		<td><input type="text" name="cover_photo_url" id="cover_photo_url" size="50" value="<%=(card != null ? card.getCoverPhotoUrl() : "")%>" /></td>
    	</tr>
    	<tr>
-   		<td><label for="page_photo_url">其他页照片文件名：</label></td>
+   		<td><label for="page_photo_url">页面照片文件名：</label></td>
    		<td><input type="text" name="page_photo_url" id="page_photo_url" size="50" value="<%=(card != null ? card.getPagePhotoUrl() : "")%>" /></td>
    	</tr>
    	<tr>
@@ -160,5 +160,5 @@ if (card != null) {
     </form>
 </div>
 </body>
-<script src="scripts/library/jquery-1.8.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 </html>

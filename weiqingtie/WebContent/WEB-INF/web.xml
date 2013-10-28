@@ -103,16 +103,29 @@
 		</init-param>
 		
 		<!-- card area -->
-	 	<init-param>
-			<param-name>cardPage</param-name>
-			<param-value>/jsp/card/t2.jsp</param-value>
+		<init-param>
+			<param-name>t1Page</param-name>
+			<param-value>/jsp/card/t1.jsp</param-value>
 		</init-param>
 		<init-param>
-			<param-name>cardCommand</param-name>
+			<param-name>t1Command</param-name>
 			<param-value>com.wqt.web.command.ViewWeddingCardCommand</param-value>
 		</init-param>
 		<init-param>
-			<param-name>cardNeedAuthorization</param-name>
+			<param-name>t1NeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+	 	<init-param>
+			<param-name>t2Page</param-name>
+			<param-value>/jsp/card/t2.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>t2Command</param-name>
+			<param-value>com.wqt.web.command.ViewWeddingCardCommand</param-value>
+		</init-param>
+		<init-param>
+			<param-name>t2NeedAuthorization</param-name>
 			<param-value>false</param-value>
 		</init-param>
 		
