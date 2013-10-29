@@ -26,7 +26,7 @@ if (card != null) {
 </head>
 
 <body title="<%=(card != null ? card.getTitle() : "")%>"
-	icon="<%=card != null ? AppUtils.AssetSitePrefix + card.getCoverPhotoUrl() : "" %>"
+	icon="<%=card != null ? AppUtils.getAssetSitePrefix() + card.getCoverPhotoUrl() : "" %>"
 	link="<%=(AppUtils.getWebSiteUrl(request) + "t2.html?cid=" + cardId) %>"
 	desc="<%=(card != null ? card.getWeddingDateDesc() : "")%>&nbsp;<%=(card != null ? card.getPlaceAddress() : "")%>">
 	<div class="t2">
@@ -43,7 +43,7 @@ if (photos != null && photos.size() > 0) {
 	for (Photo photo : photos) {
 		if (photo != null && !AppUtils.checkEmptyString(photo.getUrl())) {
 %>
-				<li style="background: lightgray;"><img src="<%=AppUtils.AssetSitePrefix + photo.getUrl() %>" width="100%"></li>
+				<li style="background: lightgray;"><img src="<%=AppUtils.getAssetSitePrefix() + photo.getUrl() %>" width="100%"></li>
 <%
 		}
 	}

@@ -16,10 +16,19 @@ public class AppUtils {
 	
 	private static SimpleDateFormat onlyDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
-	public static final boolean DebugMode = true;
-	public static final String AssetSitePrefix = "images/";//"http://weiqingtie.u.qiniudn.com/";
+	private static final boolean DebugMode = true;
+	private static final String AssetSitePrefix = "images/";
+	//private static final String AssetSitePrefix = "http://weiqingtie.u.qiniudn.com/";
 	
 	private static final Logger LOG = Logger.getLogger(AppUtils.class);
+	
+	public static String getAssetSitePrefix() {
+		return AssetSitePrefix;
+	}
+	
+	public static boolean isDebugMode() {
+		return DebugMode;
+	}
 
 	public static boolean checkEmptyString(final String str) {
 		return (str == null || str.trim().length() == 0);

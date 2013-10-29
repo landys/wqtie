@@ -1,19 +1,19 @@
 var isaoto = 0;
 function stop(){
-    var myVideo = document.getElementById("video");
+    var myMusic = document.getElementById("music");
     var button = document.getElementById("btnPlay");
-    if(!myVideo.paused){
-        myVideo.pause();
+    if(!myMusic.paused){
+        myMusic.pause();
         button.src = "images/start.png";
     } else {
-        myVideo.play();
+        myMusic.play();
         button.src = "images/stop.png";
     }
 }
 
 function play(){
-    var myVideo = document.getElementById("video");
-    myVideo.play();
+    var myMusic = document.getElementById("music");
+    myMusic.play();
 }
 
 document.ontouchstart = function(e){
@@ -21,25 +21,50 @@ document.ontouchstart = function(e){
         stop();
         isaoto = 1;
     }
-}
+};
 
-var hideErrorMessage = function() {
-	$('#errorMessage').css('display', 'none');
-}
+var validate_require = function(data) {
+    return ($.trim(data).length > 0);
+};
+
+var phone_pattern = /^1[35]\d{9}$/;
+var validate_phonenumber = function(data) {
+    var v = $.trim(data);
+    return (v != '' && phone_pattern.test(v));
+};
+
+var email_pattern = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+var validate_email = function(data) {
+    var v = $.trim(data);
+    return (v != '' && email_pattern.test(v));
+};
+
+var hideMessage = function() {
+	$('#fb_message').html("&nbsp;");
+};
 
 var showErrorMessage = function(msg) {
-	$('#errorMessage').html(msg);
-	$('#errorMessage').css('display', 'block');
-}
+	var div = $('#fb_message');
+	div.html(msg);
+	div.css('color', 'yellow');
+	div.css('font-size', '12px');
+};
+
+var showMessage = function(msg) {
+	var div = $('#fb_message');
+	div.html(msg);
+	div.css('color', 'blue');
+	div.css('font-size', '14px');
+};
 
 var onSubmitFeedback = function(cid) {
 	if (!validate_require($('#guest').val())) {
-		showErrorMessage("请先输入您的称呼。");
+		showErrorMessage("请先输入您的大名。");
 		return;
 	}
 	
 	if (!validate_require($('#phone').val())) {
-		showErrorMessage("请先输入您的号码。");
+		showErrorMessage("请先输入您的手机号。");
 		return;
 	}
 	
@@ -48,7 +73,7 @@ var onSubmitFeedback = function(cid) {
 		return;
 	}
 	
-	hideErrorMessage();
+	hideMessage();
 	$.ajax({type: 'POST', 
 		url: 'add_feedback.rmt',
 		data: {cid:cid,
@@ -60,8 +85,7 @@ var onSubmitFeedback = function(cid) {
 		success: function(message) {
 			if ($.trim(message) != "") {
 				if (message == "YES") {
-					window.alert("签到成功，感谢您的祝福！");
-					window.location.href = "t2.html?cid=<%=cardId%>";
+					showMessage("签到成功，感谢您的祝福！");
 				} else {
 					showErrorMessage("签到失败，请检查网络！");
 				}
@@ -71,10 +95,16 @@ var onSubmitFeedback = function(cid) {
 		}});
 };
 
+var mapInited = false;
 //创建和初始化地图函数：
-function initMap(longitude, latitude){
+function initMap(){
+	mapInited = true;
     createMap(longitude, latitude);//创建地图
-    setMapEvent();//设置地图事件
+    resetMap();
+}
+
+function resetMap() {
+	setMapEvent();//设置地图事件
     addMapControl();//向地图添加控件
     addMarker();//向地图中添加marker
 }
@@ -118,7 +148,7 @@ function addMarker(){
         var point = new BMap.Point(p0,p1);
 		var iconImg = createIcon(json.icon);
         var marker = new BMap.Marker(point,{icon:iconImg});
-		var iw = createInfoWindow(i);
+		//var iw = createInfoWindow(i);
 		var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
 		marker.setLabel(label);
         map.addOverlay(marker);
@@ -168,28 +198,48 @@ var hideAllDivs = function() {
 	$('#divPhotos').css('display', 'none');
 	$('#divStory').css('display', 'none');
 	$('#divPlace').css('display', 'none');
+	hideMessage();
 };
 
-var showDiv = function(divId) {
-	hideAllDivs();
-	$('#'+divId).css('display', 'block');
+var animateToShowDiv = function (div) {
+	var h = div.css('height');
+	
+	div.css('height', '0px');
+	div.css('display', 'block');
+	
+	div.animate({height:h});
+	
+	if (!mapInited && div.attr('id') == 'divPlace') {
+		initMap();
+	}
 };
+
+//var animateToHideDiv = function (div) {
+//	var h = div.css('height');
+//	
+//	div.animate({height:'0px'});
+//	
+//	div.css('display', 'none');
+//	div.css('height', h);
+//};
 
 var divClicked = function(divId) {
 	var div = $('#'+divId);
-	if (div.css('display') != 'none') {
+	if (div.css('display') == 'none') {
 		hideAllDivs();
+		animateToShowDiv(div);
 	}
 	else {
-		showDiv(divId);
+		hideAllDivs();
+		//animateToHideDiv(div);
 	}
 };
 
 $(function(){
     $('#begin').click(function(){
         $(this).slideUp('slow');
-        var myVideo = document.getElementById("video");
-        myVideo.play();
+        var myMusic = document.getElementById("music");
+        myMusic.play();
     });
     
 });

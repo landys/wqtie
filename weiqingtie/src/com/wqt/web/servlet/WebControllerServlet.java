@@ -183,7 +183,8 @@ public class WebControllerServlet extends HttpServlet {
 	 */
 	public void init() throws ServletException {
 		super.init();
-		for (Enumeration<String> en = getInitParameterNames(); en
+		for (@SuppressWarnings("unchecked")
+		Enumeration<String> en = getInitParameterNames(); en
 				.hasMoreElements();) {
 			String name = en.nextElement();
 			initProps.put(name, getInitParameter(name));

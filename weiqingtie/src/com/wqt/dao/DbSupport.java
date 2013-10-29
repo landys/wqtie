@@ -164,7 +164,7 @@ public class DbSupport {
 	private void prepareStatement(final String sql, final List<Object> paras,
 			final boolean returnKey) throws AppException {
 		if (conn == null) {
-			if (AppUtils.DebugMode) {
+			if (AppUtils.isDebugMode()) {
 				initConnection(1);
 			}
 			else {
