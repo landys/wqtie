@@ -22,13 +22,12 @@
 <title><%=(card != null ? card.getTitle() : "")%></title>
 <link href="css/core.css" rel="stylesheet" />
 <link href="css/t1.css" rel="stylesheet" />
-<link href="css/t2.css" rel="stylesheet" />
 <link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 
 <body title="<%=(card != null ? card.getTitle() : "")%>"
 	icon="<%=card != null ? AppUtils.getAssetSitePrefix() + card.getCoverPhotoUrl() : "" %>"
-	link="<%=(AppUtils.getWebSiteUrl(request) + "t2.html?cid=" + cardId) %>"
+	link="<%=(AppUtils.getWebSiteUrl(request) + "t3.html?cid=" + cardId) %>"
 	desc="<%=(card != null ? card.getWeddingDateDesc() : "")%>&nbsp;<%=(card != null ? card.getPlaceAddress() : "")%>">
 	<div class="t" data-role="page">
 		<div data-role="content">
@@ -51,14 +50,32 @@
 <%
 	}
 %>
-				<div class="t_bg" style="background:url(<%= AppUtils.getAssetSitePrefix() + card.getPagePhotoUrl()%>) no-repeat;">
-					<ul class="t_nav_a">
-						<li><p><a href="javascript:void(0);" onclick="divClicked('divFeedback');" class="a1">我要<br />签到</a></p></li>
-		            	<li><p><a href="javascript:void(0);" onclick="divClicked('divPhotos');" class="a2">爱的<br />相册</a></p></li>
-		            	<li><p><a href="javascript:void(0);" onclick="divClicked('divStory');" class="a3">爱情<br />故事</a></p></li>
-		            	<li><p><a href="javascript:void(0);" onclick="divClicked('divPlace');" class="a4">喜宴<br />地图</a></p></li>
-					</ul>
+			<div>
+				<div class="t_time_address" style="text-align: center;">
+					<%=(card != null ? card.getWeddingDateDesc() : "")%>
+					<br/><%=(card != null ? card.getPlaceAddress() : "")%>
 				</div>
+				<div class="t_note">
+					<br/>敬邀：各位亲朋好友<br />
+					新郎：<%=(card != null ? card.getGroom() : "")%><br />
+					新娘：<%=(card != null ? card.getBride() : "")%><br />
+					<p style="text-indent: 2em;">
+						<%=(card != null ? card.getNote() : "")%>
+					</p>
+					<br/>
+				</div>
+			</div>
+			
+				<!--  <div class="t_img">
+		           <img src="<%= AppUtils.getAssetSitePrefix() + card.getPagePhotoUrl()%>" class="p_img"></img></div>-->
+		       <div class="t_nav">
+		           <ul>
+		               <li style="background-color: #cc9966; width:33.3%"><p><a href="javascript:void(0);" onclick="divClicked('divFeedback');">我要<br />签到</a></p></li>
+		               <!-- <li style="background-color: #ffcccc"><p><a href="javascript:void(0);" onclick="divClicked('divPhotos');">爱的<br />相册</a></p></li>-->
+		               <li style="background-color: #ffcccc; width:33.3%"><p><a href="javascript:void(0);" onclick="divClicked('divStory');">爱情<br />故事</a></p></li>
+		               <li style="background-color: #cccc66; width:33.3%"><p><a href="javascript:void(0);" onclick="divClicked('divPlace');">喜宴<br />地图</a></p></li>
+		           </ul>
+		       </div>
 		       
 		       <div id="divFeedback" class="guests_box div_border" style="display:none">
 					<form action="add_feedback.rmt?cid=<%=cardId%>"
@@ -96,28 +113,7 @@
 							<input id="submit" name="submit" type="button" value="确定" class="scene_btn" onclick="onSubmitFeedback(<%=cardId%>);"/>
 						</div>
 					</form>
-				</div>
-				
-				<div id="divPhotos" class="div_border" style="display:none">
-		<%
-		if (photos != null && photos.size() > 0) {
-		%>
-					<ul>
-		<%
-			for (Photo photo : photos) {
-				if (photo != null && !AppUtils.checkEmptyString(photo.getUrl())) {
-		%>
-						<li><img src="<%=AppUtils.getAssetSitePrefix() + photo.getUrl() %>" width="100%"></li>
-		<%
-				}
-			}
-		%>
-					</ul>
-		<%
-		}
-		%>
-				</div>
-				
+				</div>			
 				<div id="divStory" class="div_border" style="display:none">
 					<h3 class="h_item">爱情故事</h3>
 					<p style="text-align:left; text-indent: 2em; font-size:14px;">
@@ -133,20 +129,26 @@
 					</p>
 				</div>
 			</div>
-			<div>
-				<div class="t_time_address" style="text-align: center;">
-					<%=(card != null ? card.getWeddingDateDesc() : "")%>
-					<br/><%=(card != null ? card.getPlaceAddress() : "")%>
-				</div>
-				<div class="t_note">
-					<br/>敬邀：各位亲朋好友<br />
-					新郎：<%=(card != null ? card.getGroom() : "")%><br />
-					新娘：<%=(card != null ? card.getBride() : "")%><br />
-					<p style="text-indent: 2em;">
-						<%=(card != null ? card.getNote() : "")%>
-					</p>
-					<br/>
-				</div>
+			
+			
+			<div id="divPhotos">
+	<%
+	if (photos != null && photos.size() > 0) {
+	%>
+				<ul>
+	<%
+		for (Photo photo : photos) {
+			if (photo != null && !AppUtils.checkEmptyString(photo.getUrl())) {
+	%>
+					<li><img src="<%=AppUtils.getAssetSitePrefix() + photo.getUrl() %>" width="100%"></li>
+	<%
+			}
+		}
+	%>
+				</ul>
+	<%
+	}
+	%>
 			</div>
 		</div>
 		<div class="t_foot" data-role="foot">
@@ -175,5 +177,11 @@ if (card != null && !AppUtils.checkEmptyString(card.getAgentQcodePath())) {
 			point:"<%=card!=null ? card.getPlaceLongitude() : ""%>|<%=card!=null ? card.getPlaceLatitude() : ""%>",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}];
 	var longitude = <%=card!=null ? card.getPlaceLongitude() : ""%>;
 	var latitude = <%=card!=null ? card.getPlaceLatitude() : ""%>;
+	var hideAllDivs = function() {
+		$('#divFeedback').css('display', 'none');
+		$('#divStory').css('display', 'none');
+		$('#divPlace').css('display', 'none');
+		hideMessage();
+	};
 </script>
 </html>

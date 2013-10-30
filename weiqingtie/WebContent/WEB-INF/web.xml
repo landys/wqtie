@@ -130,15 +130,28 @@
 		</init-param>
 		
 		<init-param>
-			<param-name>feedbackPage</param-name>
-			<param-value>/jsp/card/t2_feedback.jsp</param-value>
+			<param-name>t3Page</param-name>
+			<param-value>/jsp/card/t3.jsp</param-value>
 		</init-param>
 		<init-param>
-			<param-name>feedbackCommand</param-name>
+			<param-name>t3Command</param-name>
 			<param-value>com.wqt.web.command.ViewWeddingCardCommand</param-value>
 		</init-param>
 		<init-param>
-			<param-name>feedbackNeedAuthorization</param-name>
+			<param-name>t3NeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>t4Page</param-name>
+			<param-value>/jsp/card/t4.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>t4Command</param-name>
+			<param-value>com.wqt.web.command.ViewWeddingCardCommand</param-value>
+		</init-param>
+		<init-param>
+			<param-name>t4NeedAuthorization</param-name>
 			<param-value>false</param-value>
 		</init-param>
 		
@@ -148,6 +161,20 @@
 		</init-param>
 		<init-param>
 			<param-name>add_feedbackNeedAuthorization</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+		<!--
+		<init-param>
+			<param-name>feedbackPage</param-name>
+			<param-value>/jsp/card/t2_feedback.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>feedbackCommand</param-name>
+			<param-value>com.wqt.web.command.ViewWeddingCardCommand</param-value>
+		</init-param>
+		<init-param>
+			<param-name>feedbackNeedAuthorization</param-name>
 			<param-value>false</param-value>
 		</init-param>
 		
@@ -189,7 +216,7 @@
 			<param-name>storyNeedAuthorization</param-name>
 			<param-value>false</param-value>
 		</init-param>
-		
+		-->
     </servlet>
 
     <servlet-mapping>
