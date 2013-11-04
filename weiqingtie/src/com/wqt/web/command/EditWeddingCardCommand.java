@@ -77,6 +77,7 @@ public class EditWeddingCardCommand implements ICommand {
 		card.setBride(request.getParameter("bride"));
 		card.setCoverPhotoUrl(request.getParameter("cover_photo_url"));
 		card.setPagePhotoUrl(request.getParameter("page_photo_url"));
+		card.setPageImageUrl(request.getParameter("page_image_url"));
 		//card.setWeddingDate(AppUtils.simpleStringToDate(request.getParameter("wedding_date")));
 		card.setWeddingDateDesc(request.getParameter("wedding_date_desc"));
 		card.setPlaceName(request.getParameter("place_name"));

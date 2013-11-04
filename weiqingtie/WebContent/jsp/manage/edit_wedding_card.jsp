@@ -44,79 +44,83 @@ if (card != null) {
    <table>
     <tr>
    		<td><label for="title">请贴标题：</label></td>
-   		<td><input type="text" name="title" id="title" size="50" value="<%=(card != null ? card.getTitle() : "")%>" /></td>
+   		<td><input type="text" name="title" id="title" size="50" value="<%=(card != null && card.getTitle() != null ? card.getTitle() : "")%>" /></td>
    	</tr>
    	<tr>
    		<td><label for="groom">新郎：</label></td>
-   		<td><input type="text" name="groom" id="groom" size="50" value="<%=(card != null ? card.getGroom() : "")%>" /></td>
+   		<td><input type="text" name="groom" id="groom" size="50" value="<%=(card != null && card.getGroom() != null ? card.getGroom() : "")%>" /></td>
    	</tr>
     <tr>
    		<td><label for="bride">新娘：</label></td>
-   		<td><input type="text" name="bride" id="bride" size="50" value="<%=(card != null ? card.getBride() : "")%>" /></td>
+   		<td><input type="text" name="bride" id="bride" size="50" value="<%=(card != null && card.getBride() != null ? card.getBride() : "")%>" /></td>
    	</tr>
    	<tr>
    		<td><label for="cover_photo_url">图标照片文件名：</label></td>
-   		<td><input type="text" name="cover_photo_url" id="cover_photo_url" size="50" value="<%=(card != null ? card.getCoverPhotoUrl() : "")%>" /></td>
+   		<td><input type="text" name="cover_photo_url" id="cover_photo_url" size="50" value="<%=(card != null && card.getCoverPhotoUrl() != null ? card.getCoverPhotoUrl() : "")%>" /></td>
    	</tr>
    	<tr>
    		<td><label for="page_photo_url">页面照片文件名：</label></td>
-   		<td><input type="text" name="page_photo_url" id="page_photo_url" size="50" value="<%=(card != null ? card.getPagePhotoUrl() : "")%>" /></td>
+   		<td><input type="text" name="page_photo_url" id="page_photo_url" size="50" value="<%=(card != null && card.getPagePhotoUrl() != null ? card.getPagePhotoUrl() : "")%>" /></td>
+   	</tr>
+   	<tr>
+   		<td><label for="page_image_url">页面图片文件名（仅用于模板2）：</label></td>
+   		<td><input type="text" name="page_image_url" id="page_image_url" size="50" value="<%=(card != null && card.getPageImageUrl() != null ? card.getPageImageUrl() : "")%>" /></td>
    	</tr>
    	<tr>
    		<td><label for="wedding_date_desc">详细时间（比如：2013年11月24日中午11点半）：</label></td>
-   		<td><input type="text" name="wedding_date_desc" id="wedding_date_desc" size="50"value="<%=(card != null ? card.getWeddingDateDesc() : "")%>" /></td>
+   		<td><input type="text" name="wedding_date_desc" id="wedding_date_desc" size="50"value="<%=(card != null && card.getWeddingDateDesc() != null ? card.getWeddingDateDesc() : "")%>" /></td>
    	</tr>
    	<tr>
    		<td><label for="place_name">酒店名称：</label></td>
-   		<td><input type="text" name="place_name" id="place_name" size="50" value="<%=(card != null ? card.getPlaceName() : "")%>" /></td>
+   		<td><input type="text" name="place_name" id="place_name" size="50" value="<%=(card != null && card.getPlaceName() != null ? card.getPlaceName() : "")%>" /></td>
    	</tr>
    	<tr>
    		<td><label for="place_address">酒店地址：</label></td>
-   		<td><input type="text" name="place_address" id="place_address" size="50" value="<%=(card != null ? card.getPlaceAddress() : "") %>" /></td>
+   		<td><input type="text" name="place_address" id="place_address" size="50" value="<%=(card != null && card.getPlaceAddress() != null ? card.getPlaceAddress() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="place_longitude">酒店地点经度：</label></td>
-   		<td><input type="text" name="place_longitude" id="place_longitude" size="50" value="<%=(card != null ? card.getPlaceLongitude(): "") %>" /></td>
+   		<td><input type="text" name="place_longitude" id="place_longitude" size="50" value="<%=(card != null && card.getPlaceLongitude() != null ? card.getPlaceLongitude() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="place_latitude">酒店地点纬度：</label></td>
-   		<td><input type="text" name="place_latitude" id="place_latitude" size="50" value="<%=(card != null ? card.getPlaceLatitude(): "") %>" /></td>
+   		<td><input type="text" name="place_latitude" id="place_latitude" size="50" value="<%=(card != null && card.getPlaceLatitude() != null ? card.getPlaceLatitude() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="place_phone">酒店电话：</label></td>
-   		<td><input type="text" name="place_phone" id="place_phone" size="50" value="<%=(card != null ? card.getPlacePhone() : "") %>" /></td>
+   		<td><input type="text" name="place_phone" id="place_phone" size="50" value="<%=(card != null && card.getPlacePhone() != null ? card.getPlacePhone() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="note">请贴内容：</label></td>
-   		<td><textarea name="note" id="note" cols="45" rows="6"><%=(card != null ? card.getNote() : "") %></textarea></td>
+   		<td><textarea name="note" id="note" cols="45" rows="6"><%=(card != null && card.getNote() != null ? card.getNote() : "") %></textarea></td>
    	</tr>
    	<tr>
    		<td><label for="music_url">背景音乐文件名：</label></td>
-   		<td><input type="text" name="music_url" id="music_url" size="50" value="<%=(card != null ? card.getMusicUrl(): "") %>" /></td>
+   		<td><input type="text" name="music_url" id="music_url" size="50" value="<%=(card != null && card.getMusicUrl() != null ? card.getMusicUrl(): "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="video_url">视频链接：</label></td>
-   		<td><input type="text" name="video_url" id="video_url" size="50" value="<%=(card != null ? card.getVideoUrl() : "") %>" /></td>
+   		<td><input type="text" name="video_url" id="video_url" size="50" value="<%=(card != null && card.getVideoUrl() != null ? card.getVideoUrl() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="story">爱情故事：</label></td>
-   		<td><textarea name="story" id="story" cols="45" rows="8"><%=(card != null ? card.getStory() : "") %></textarea></td>
+   		<td><textarea name="story" id="story" cols="45" rows="8"><%=(card != null && card.getStory() != null? card.getStory() : "") %></textarea></td>
    	</tr>
    	<tr>
    		<td><label for="agent_name">婚庆或代理公司名称</label></td>
-   		<td><input type="text" name="agent_name" id="agent_name" size="50" value="<%=(card != null ? card.getAgentName() : "") %>" /></td>
+   		<td><input type="text" name="agent_name" id="agent_name" size="50" value="<%=(card != null && card.getAgentName() != null ? card.getAgentName() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="agent_weixin">婚庆或代理公司微信</label></td>
-   		<td><input type="text" name="agent_weixin" id="agent_weixin" size="50" value="<%=(card != null ? card.getAgentWeixin() : "") %>" /></td>
+   		<td><input type="text" name="agent_weixin" id="agent_weixin" size="50" value="<%=(card != null && card.getAgentWeixin() != null ? card.getAgentWeixin() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="agent_qcode_path">婚庆或代理公司微信QR图文件名</label></td>
-   		<td><input type="text" name="agent_qcode_path" id="agent_qcode_path" size="50" value="<%=(card != null ? card.getAgentQcodePath() : "") %>" /></td>
+   		<td><input type="text" name="agent_qcode_path" id="agent_qcode_path" size="50" value="<%=(card != null && card.getAgentQcodePath() != null ? card.getAgentQcodePath() : "") %>" /></td>
    	</tr>
    	<tr>
    		<td><label for="agent_website">婚庆或代理公司网址</label></td>
-   		<td><input type="text" name="agent_website" id="agent_website" size="50" value="<%=(card != null ? card.getAgentWebsite() : "") %>" /></td>
+   		<td><input type="text" name="agent_website" id="agent_website" size="50" value="<%=(card != null && card.getAgentWebsite() != null ? card.getAgentWebsite() : "") %>" /></td>
    	</tr>
    	
    	<!-- photos -->

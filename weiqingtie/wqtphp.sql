@@ -27,6 +27,7 @@ create table `tbl_wedding_card` (
 `musicUrl` varchar(1000),
 `coverPhotoUrl` varchar(1000),
 `pagePhotoUrl` varchar(1000),
+`pageImageUrl` varchar(1000),
 `placeName` varchar(255),
 `placeAddress` varchar(500),
 `placeUrl` varchar(1000),

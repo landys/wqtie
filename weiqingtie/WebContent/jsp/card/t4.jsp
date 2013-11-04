@@ -21,15 +21,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><%=(card != null ? card.getTitle() : "")%></title>
 <link href="css/core.css" rel="stylesheet" />
-<link href="css/t1.css" rel="stylesheet" />
-<link href="css/t2.css" rel="stylesheet" />
+<link href="css/t3.css" rel="stylesheet" />
 <link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 
 <body title="<%=(card != null ? card.getTitle() : "")%>"
 	icon="<%=card != null ? AppUtils.getAssetSitePrefix() + card.getCoverPhotoUrl() : "" %>"
-	link="<%=(AppUtils.getWebSiteUrl(request) + "t2.html?cid=" + cardId) %>"
-	desc="<%=(card != null ? card.getWeddingDateDesc() : "")%>&nbsp;<%=(card != null ? card.getPlaceAddress() : "")%>">
+	link="<%=(AppUtils.getWebSiteUrl(request) + "t4.html?cid=" + cardId) %>"
+	desc="<%=(card != null ? card.getWeddingDateDesc() : "")%>&nbsp;<%=(card != null ? card.getPlaceAddress() : "")%>"
+	style="background:-webkit-gradient(radial,50% 250,0,50% 250,500, from(#f0a2b2), to(#e4332d)) ;">
 	<div class="t" data-role="page">
 		<div data-role="content">
 			<div class="t_content">
@@ -51,19 +51,77 @@
 <%
 	}
 %>
-				<div class="t_bg" style="background:url(<%= AppUtils.getAssetSitePrefix() + (card.getPageImageUrl() != null ? card.getPageImageUrl() : card.getPagePhotoUrl())%>) no-repeat;">
-					<ul class="t_nav_a">
-						<li><p><a href="javascript:void(0);" onclick="divClicked('divFeedback');" class="a1">我要<br />签到</a></p></li>
-		            	<li><p><a href="javascript:void(0);" onclick="divClicked('divPhotos');" class="a2">爱的<br />相册</a></p></li>
-		            	<li><p><a href="javascript:void(0);" onclick="divClicked('divStory');" class="a3">爱情<br />故事</a></p></li>
-		            	<li><p><a href="javascript:void(0);" onclick="divClicked('divPlace');" class="a4">喜宴<br />地图</a></p></li>
-					</ul>
+			
+			<div class="t_img">
+		           <img src="<%= AppUtils.getAssetSitePrefix() + card.getPagePhotoUrl()%>" class="p_img"></img></div>
+		           
+			<div>
+				<div class="t_time_address" style="text-align: center;">
+					<%=(card != null ? card.getWeddingDateDesc() : "")%>
+					<br/><%=(card != null ? card.getPlaceAddress() : "")%>
+				</div>
+				<div class="t_note">
+					<br/>敬邀：各位亲朋好友<br />
+					新郎：<%=(card != null ? card.getGroom() : "")%><br />
+					新娘：<%=(card != null ? card.getBride() : "")%><br />
+					<p style="text-indent: 2em;">
+						<%=(card != null ? card.getNote() : "")%>
+					</p>
+					<br/>
+				</div>
+			</div>
+			
+			<div style="background-color: #cc9966" class="nav_item" onclick="divClicked('divPhotos');">
+		       		<a href="javascript:void(0);">爱&nbsp;的&nbsp;相&nbsp;册</a>
+				</div>
+				
+				
+			<div id="divPhotos" style="display:none">
+	<%
+	if (photos != null && photos.size() > 0) {
+	%>
+				<ul>
+	<%
+		for (Photo photo : photos) {
+			if (photo != null && !AppUtils.checkEmptyString(photo.getUrl())) {
+	%>
+					<li><img src="<%=AppUtils.getAssetSitePrefix() + photo.getUrl() %>" width="100%"></li>
+	<%
+			}
+		}
+	%>
+				</ul>
+	<%
+	}
+	%>
+			</div>	
+				
+				<div style="background-color: #ffcccc" class="nav_item" onclick="divClicked('divStory');">
+		       		<a href="javascript:void(0);">爱&nbsp;情&nbsp;故&nbsp;事</a>
+		       </div>	
+				<div id="divStory" class="div_border" style="display:none">
+					<p style="text-align:left; text-indent: 2em; font-size:14px;">
+						<%=card != null ? card.getStory() : "" %>
+					</p>
+				</div>
+			
+			 	<div style="background-color: #cccc66" class="nav_item" onclick="divClicked('divPlace');">
+		       		<a href="javascript:void(0);">喜&nbsp;宴&nbsp;地&nbsp;图</a>
+		      	 </div>
+				<div id="divPlace" class="div_border" style="display:none">
+					<div id="dituContent" class="div_place"></div>
+					<p style="text-align:center; margin-top:6px;">
+						<a href="http://api.map.baidu.com/marker?location=<%=card!=null ? card.getPlaceLatitude() : ""%>,<%=card!=null ? card.getPlaceLongitude() : ""%>&title=<%=card!=null ? card.getPlaceName() : ""%>&content=<%=card!=null ? card.getPlaceAddress() : ""%>&output=html">【点击进入百度地图导航】</a>
+					</p>
+				</div>
+				
+				<div style="background-color: #cc99cc" class="nav_item" onclick="divClicked('divFeedback');">
+		       		<a href="javascript:void(0);">我&nbsp;要&nbsp;签&nbsp;到</a>
 				</div>
 		       
-		       <div id="divFeedback" class="guests_box div_border" style="display:none">
+		       <div id="divFeedback" class="guests_box div_border" style="display:none;">
 					<form action="add_feedback.rmt?cid=<%=cardId%>"
 						method="post">
-						<h3 class="h_item" style="margin-bottom:0px">贵宾签到</h3>
 						<p id="fb_message" class="p_error"></p>
 						<div>
 							<input id="guest" name="guest" type="text"
@@ -96,57 +154,7 @@
 							<input id="submit" name="submit" type="button" value="确定" class="scene_btn" onclick="onSubmitFeedback(<%=cardId%>);"/>
 						</div>
 					</form>
-				</div>
-				
-				<div id="divPhotos" class="div_border" style="display:none">
-		<%
-		if (photos != null && photos.size() > 0) {
-		%>
-					<ul>
-		<%
-			for (Photo photo : photos) {
-				if (photo != null && !AppUtils.checkEmptyString(photo.getUrl())) {
-		%>
-						<li><img src="<%=AppUtils.getAssetSitePrefix() + photo.getUrl() %>" width="100%"></li>
-		<%
-				}
-			}
-		%>
-					</ul>
-		<%
-		}
-		%>
-				</div>
-				
-				<div id="divStory" class="div_border" style="display:none">
-					<h3 class="h_item">爱情故事</h3>
-					<p style="text-align:left; text-indent: 2em; font-size:14px;">
-						<%=card != null ? card.getStory() : "" %>
-					</p>
-				</div>
-			
-				<div id="divPlace" class="div_border" style="display:none">
-					<h3 class="h_item">喜宴地图</h3>
-					<div id="dituContent" class="div_place"></div>
-					<p style="text-align:center; margin-top:6px;">
-						<a href="http://api.map.baidu.com/marker?location=<%=card!=null ? card.getPlaceLatitude() : ""%>,<%=card!=null ? card.getPlaceLongitude() : ""%>&title=<%=card!=null ? card.getPlaceName() : ""%>&content=<%=card!=null ? card.getPlaceAddress() : ""%>&output=html">【点击进入百度地图导航】</a>
-					</p>
-				</div>
-			</div>
-			<div>
-				<div class="t_time_address" style="text-align: center;">
-					<%=(card != null ? card.getWeddingDateDesc() : "")%>
-					<br/><%=(card != null ? card.getPlaceAddress() : "")%>
-				</div>
-				<div class="t_note">
-					<br/>敬邀：各位亲朋好友<br />
-					新郎：<%=(card != null ? card.getGroom() : "")%><br />
-					新娘：<%=(card != null ? card.getBride() : "")%><br />
-					<p style="text-indent: 2em;">
-						<%=(card != null ? card.getNote() : "")%>
-					</p>
-					<br/>
-				</div>
+				</div>	
 			</div>
 		</div>
 		<div class="t_foot" data-role="foot">

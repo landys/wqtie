@@ -36,6 +36,8 @@ public class WeddingCard extends BaseObject {
 	private String coverPhotoUrl;
 
 	private String pagePhotoUrl;
+	
+	private String pageImageUrl;
 
 	private String placeName;
 
@@ -86,12 +88,12 @@ public class WeddingCard extends BaseObject {
 			Date weddingDate, String weddingDateDesc, String phone,
 			String weixin, String note, String story, String videoUrl,
 			String musicUrl, String coverPhotoUrl, String pagePhotoUrl,
-			String placeName, String placeAddress, String placeUrl,
-			String placePhone, String placeLongitude, String placeLatitude,
-			String agentName, String agentPhone, String agentWeixin,
-			String agentQcodePath, String agentWebsite, String agentWeibo,
-			int status, Date createDate, User user, ArrayList<Photo> photos,
-			ArrayList<Feedback> feedbacks) {
+			String pageImageUrl, String placeName, String placeAddress,
+			String placeUrl, String placePhone, String placeLongitude,
+			String placeLatitude, String agentName, String agentPhone,
+			String agentWeixin, String agentQcodePath, String agentWebsite,
+			String agentWeibo, int status, Date createDate, User user,
+			ArrayList<Photo> photos, ArrayList<Feedback> feedbacks) {
 		super();
 		this.cardId = cardId;
 		this.groom = groom;
@@ -107,6 +109,7 @@ public class WeddingCard extends BaseObject {
 		this.musicUrl = musicUrl;
 		this.coverPhotoUrl = coverPhotoUrl;
 		this.pagePhotoUrl = pagePhotoUrl;
+		this.pageImageUrl = pageImageUrl;
 		this.placeName = placeName;
 		this.placeAddress = placeAddress;
 		this.placeUrl = placeUrl;
@@ -236,6 +239,14 @@ public class WeddingCard extends BaseObject {
 
 	public void setPagePhotoUrl(String pagePhotoUrl) {
 		this.pagePhotoUrl = pagePhotoUrl;
+	}
+
+	public String getPageImageUrl() {
+		return pageImageUrl;
+	}
+
+	public void setPageImageUrl(String pageImageUrl) {
+		this.pageImageUrl = pageImageUrl;
 	}
 
 	public String getPlaceName() {

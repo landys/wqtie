@@ -2,6 +2,8 @@
 /* CSS Document */
 
 body{
+	background: #e4322c;
+	background: -moz-linear-gradient(top, #e4322c, #f0a2b2 100%);
 	background:-webkit-gradient(radial,50% 500,0,50% 500,600, from(#f0a2b2), to(#e4332d)) ;
 }
 

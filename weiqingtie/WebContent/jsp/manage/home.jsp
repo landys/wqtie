@@ -40,7 +40,7 @@ if (nCards > 0) {
    		<td><label>新娘</label></td>
    		<td><label>婚期</label></td>
    		<td><label>酒店</label></td>
-   		<td colspan="4"><label>操作</label></td>
+   		<td colspan="5"><label>操作</label></td>
    	</tr>
 <%
 	for (WeddingCard card : cards) {
@@ -54,6 +54,7 @@ if (nCards > 0) {
    		<td><a href="t1.html?cid=<%=card.getCardId()%>">预览1</a></td>
    		<td><a href="t2.html?cid=<%=card.getCardId()%>">预览2</a></td>
    		<td><a href="t3.html?cid=<%=card.getCardId()%>">预览3</a></td>
+   		<td><a href="t4.html?cid=<%=card.getCardId()%>">预览4</a></td>
    		<td><a href="edit_card.html?cid=<%=card.getCardId()%>">编辑信息</a></td>
    		<!-- <td><a href="edit_photos.html?cid=<%=card.getCardId()%>">编辑照片</a></td>-->
    		<!-- <td><a href="#" onclick="onDelete();">删除</a></td>-->

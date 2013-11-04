@@ -56,15 +56,15 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 				rs.getString("weixin"), rs.getString("note"),
 				rs.getString("story"), rs.getString("videoUrl"),
 				rs.getString("musicUrl"), rs.getString("coverPhotoUrl"),
-				rs.getString("pagePhotoUrl"), rs.getString("placeName"),
-				rs.getString("placeAddress"), rs.getString("placeUrl"),
-				rs.getString("placePhone"), rs.getString("placeLongitude"),
-				rs.getString("placeLatitude"), rs.getString("agentName"),
-				rs.getString("agentPhone"), rs.getString("agentWeixin"),
-				rs.getString("agentQcodePath"), rs.getString("agentWebsite"),
-				rs.getString("agentWeibo"), rs.getInt("status"),
-				rs.getDate("createDate"), new User(rs.getLong("userId")), null,
-				null);
+				rs.getString("pagePhotoUrl"), rs.getString("pageImageUrl"),
+				rs.getString("placeName"), rs.getString("placeAddress"),
+				rs.getString("placeUrl"), rs.getString("placePhone"),
+				rs.getString("placeLongitude"), rs.getString("placeLatitude"),
+				rs.getString("agentName"), rs.getString("agentPhone"),
+				rs.getString("agentWeixin"), rs.getString("agentQcodePath"),
+				rs.getString("agentWebsite"), rs.getString("agentWeibo"),
+				rs.getInt("status"), rs.getDate("createDate"), new User(
+						rs.getLong("userId")), null, null);
 
 		return t;
 	}
@@ -86,6 +86,7 @@ public class WeddingCardDao extends AbstractBaseDao<WeddingCard> {
 		paras.add(t.getMusicUrl());
 		paras.add(t.getCoverPhotoUrl());
 		paras.add(t.getPagePhotoUrl());
+		paras.add(t.getPageImageUrl());
 		paras.add(t.getPlaceName());
 		paras.add(t.getPlaceAddress());
 		paras.add(t.getPlaceUrl());

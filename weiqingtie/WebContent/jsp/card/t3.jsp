@@ -21,7 +21,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><%=(card != null ? card.getTitle() : "")%></title>
 <link href="css/core.css" rel="stylesheet" />
-<link href="css/t1.css" rel="stylesheet" />
+<link href="css/t3.css" rel="stylesheet" />
 <link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 
@@ -50,6 +50,26 @@
 <%
 	}
 %>
+			<div id="divPhotos">
+	<%
+	if (photos != null && photos.size() > 0) {
+	%>
+				<ul>
+	<%
+		for (Photo photo : photos) {
+			if (photo != null && !AppUtils.checkEmptyString(photo.getUrl())) {
+	%>
+					<li><img src="<%=AppUtils.getAssetSitePrefix() + photo.getUrl() %>" width="100%"></li>
+	<%
+			}
+		}
+	%>
+				</ul>
+	<%
+	}
+	%>
+			</div>
+			
 			<div>
 				<div class="t_time_address" style="text-align: center;">
 					<%=(card != null ? card.getWeddingDateDesc() : "")%>
@@ -68,19 +88,21 @@
 			
 				<!--  <div class="t_img">
 		           <img src="<%= AppUtils.getAssetSitePrefix() + card.getPagePhotoUrl()%>" class="p_img"></img></div>-->
-		       <div class="t_nav">
+		       <!--  <div class="t_nav">
 		           <ul>
 		               <li style="background-color: #cc9966; width:33.3%"><p><a href="javascript:void(0);" onclick="divClicked('divFeedback');">我要<br />签到</a></p></li>
-		               <!-- <li style="background-color: #ffcccc"><p><a href="javascript:void(0);" onclick="divClicked('divPhotos');">爱的<br />相册</a></p></li>-->
 		               <li style="background-color: #ffcccc; width:33.3%"><p><a href="javascript:void(0);" onclick="divClicked('divStory');">爱情<br />故事</a></p></li>
 		               <li style="background-color: #cccc66; width:33.3%"><p><a href="javascript:void(0);" onclick="divClicked('divPlace');">喜宴<br />地图</a></p></li>
 		           </ul>
 		       </div>
+		       -->
+				<div style="background-color: #cc9966" class="nav_item" onclick="divClicked('divFeedback');">
+		       		<a href="javascript:void(0);">我&nbsp;要&nbsp;签&nbsp;到</a>
+				</div>
 		       
-		       <div id="divFeedback" class="guests_box div_border" style="display:none">
+		       <div id="divFeedback" class="guests_box div_border" style="display:none; margin-top:0px;">
 					<form action="add_feedback.rmt?cid=<%=cardId%>"
 						method="post">
-						<h3 class="h_item" style="margin-bottom:0px">贵宾签到</h3>
 						<p id="fb_message" class="p_error"></p>
 						<div>
 							<input id="guest" name="guest" type="text"
@@ -113,42 +135,26 @@
 							<input id="submit" name="submit" type="button" value="确定" class="scene_btn" onclick="onSubmitFeedback(<%=cardId%>);"/>
 						</div>
 					</form>
-				</div>			
+				</div>		
+				
+				<div style="background-color: #ffcccc" class="nav_item" onclick="divClicked('divStory');">
+		       		<a href="javascript:void(0);">爱&nbsp;情&nbsp;故&nbsp;事</a>
+		       </div>	
 				<div id="divStory" class="div_border" style="display:none">
-					<h3 class="h_item">爱情故事</h3>
 					<p style="text-align:left; text-indent: 2em; font-size:14px;">
 						<%=card != null ? card.getStory() : "" %>
 					</p>
 				</div>
 			
+			 	<div style="background-color: #cccc66" class="nav_item" onclick="divClicked('divPlace');">
+		       		<a href="javascript:void(0);">喜&nbsp;宴&nbsp;地&nbsp;图</a>
+		      	 </div>
 				<div id="divPlace" class="div_border" style="display:none">
-					<h3 class="h_item">喜宴地图</h3>
 					<div id="dituContent" class="div_place"></div>
 					<p style="text-align:center; margin-top:6px;">
 						<a href="http://api.map.baidu.com/marker?location=<%=card!=null ? card.getPlaceLatitude() : ""%>,<%=card!=null ? card.getPlaceLongitude() : ""%>&title=<%=card!=null ? card.getPlaceName() : ""%>&content=<%=card!=null ? card.getPlaceAddress() : ""%>&output=html">【点击进入百度地图导航】</a>
 					</p>
 				</div>
-			</div>
-			
-			
-			<div id="divPhotos">
-	<%
-	if (photos != null && photos.size() > 0) {
-	%>
-				<ul>
-	<%
-		for (Photo photo : photos) {
-			if (photo != null && !AppUtils.checkEmptyString(photo.getUrl())) {
-	%>
-					<li><img src="<%=AppUtils.getAssetSitePrefix() + photo.getUrl() %>" width="100%"></li>
-	<%
-			}
-		}
-	%>
-				</ul>
-	<%
-	}
-	%>
 			</div>
 		</div>
 		<div class="t_foot" data-role="foot">

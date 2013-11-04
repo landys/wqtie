@@ -1,0 +1,215 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background: #e4322c;
+	background: -moz-linear-gradient(top, #e4322c, #f0a2b2 100%);/*from(#e4332d), to(#fcd2e2)*/
+	background:-webkit-gradient(radial,50% 1500,0,50% 1000,1500, from(#f0a2b2), to(#e4332d)) ;
+}
+.t{
+	width:304px;
+	margin:0 auto;
+}
+.t_content{
+	width:100%;
+	margin:0 auto;
+	height:auto;
+	position:relative;
+	padding-bottom:10px;
+}
+.t_top{
+	color:#fff;
+	background:#481414;
+	font-size:14px;
+	border-bottom:2px solid #a40a2e;
+	text-align:center;
+	height:30px;
+	line-height:30px;
+}
+.p_img {
+	width:304px;
+    height:auto;
+}
+
+.nav_item {
+	width:300px;
+	height:32px;
+	font-size:20px;
+	text-align:center;
+	vertical-align:middle;
+	margin-top:5px;
+	margin-bottom:5px;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
+	border-radius:10px;
+}
+
+.nav_item a {
+	width:300%;
+	height:32px;
+	line-height: 32px;
+	vertical-align:middle;
+}
+
+.nav_item a:hover {
+	text-decoration:none;
+}
+
+.t_time_address {
+	font-size:16px;
+}
+
+.t_note {
+	font-size:14px;
+}
+
+.t_foot {
+	text-align: center; 
+	border-top: solid 1px;
+}
+.location_pic{
+	position:absolute;
+	right:-12px;
+	top:69px;
+	display:block;
+	width:76px;
+	height:74px;
+	font-size:14px;
+	line-height:16px;
+	background:url(../images/location_pic.png) no-repeat;
+	padding:7px 0 0 25px;
+}
+.location_main{
+	padding-top:151px;
+}
+.location_main p{
+	color:#fff;
+	text-align:center;
+	line-height:18px;
+}
+.location_map img{
+	width:285px;
+	height:139px;
+	display:block;
+	margin:6px auto;
+}
+.location_main span{
+	display:block;
+	line-height:22px;
+	text-align:left;
+	font-size:14px;
+	padding-left:40px;
+}
+.wedding_photo{
+	background:url(../images/photo_03.jpg) no-repeat;
+	width:286px;
+	height:255px;
+	position:relative;
+	margin:0 auto;
+}
+.wedding_photo_a1, .wedding_photo_a2{
+	position:absolute;
+	top:120px;
+}
+.wedding_photo_a1{
+	left:10px;
+}
+.wedding_photo_a2{
+	right:10px;
+}
+.div_border {
+	margin-top:6px;
+}
+.scene_txt{
+	height:30px;
+	line-height:30px;
+	width:98%; 
+	border:none; 
+	background:none;
+	background:#fff;
+	color:#202020;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	padding:0 3px;
+	font-size:14px;
+	border-radius:3px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	vertical-align:middle;
+}
+
+.scene_area{
+	width:98%;
+	height:80px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	font-size:14px;
+	border-radius:3px;
+	color:#202020;
+	border:none;
+	background:none;
+	background:#fff;
+	padding:3px;
+	margin-bottom:10px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.scene_btn{
+	font-size:14px;
+	color:#202020;
+	width:60px;
+	border:none;
+	background:none;
+	background:url(../images/btn.png) no-repeat;
+	height:32px;
+	line-height:26px;
+	text-align:center;
+	vertical-align:middle;
+	horizontal-align:center;
+	cursor:pointer;
+}
+.guests_box{
+	width:100%;
+	margin-top:10px;
+	height:auto;
+}
+.guests_box span{
+	margin:6px 0;
+}
+.h_item{
+	font-size:16px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+.lbl_attendees {
+	font-size:14px;
+	color:#202020;
+}
+.sel_attendees {
+	font-size:14px;
+	color:#202020;
+	width:216px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.p_error {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	height:17px;
+}
+
+.div_place {
+	width: 100%;
+	margin: auto; 
+	height: 300px; 
+	overflow: hidden; 
+	position: relative; 
+	text-align: center;
+}
+
+.about_color{
+    color: #000000;
+}
