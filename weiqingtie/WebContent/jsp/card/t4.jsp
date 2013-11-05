@@ -122,7 +122,6 @@
 		       <div id="divFeedback" class="guests_box div_border" style="display:none;">
 					<form action="add_feedback.rmt?cid=<%=cardId%>"
 						method="post">
-						<p id="fb_message" class="p_error"></p>
 						<div>
 							<input id="guest" name="guest" type="text"
 								class="scene_txt" placeholder="请输入您的大名">
@@ -150,6 +149,7 @@
 						<div style="margin-top: 10px;">
 							<textarea id="wish" name="wish" class="scene_area" placeholder="送祝福"></textarea>
 						</div>
+						<p id="fb_message" class="p_error"></p>
 						<div style="text-align:center;">
 							<input id="submit" name="submit" type="button" value="确定" class="scene_btn" onclick="onSubmitFeedback(<%=cardId%>);"/>
 						</div>

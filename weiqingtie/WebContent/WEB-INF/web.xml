@@ -77,6 +77,16 @@
 			<param-value>com.wqt.web.command.EditWeddingCardCommand</param-value>
 		</init-param>
 		
+		<!-- copy wedding card -->
+		<init-param>
+			<param-name>copy_cardPage</param-name>
+			<param-value>home.html</param-value>
+		</init-param>
+		<init-param>
+			<param-name>copy_cardCommand</param-name>
+			<param-value>com.wqt.web.command.CopyWeddingCardCommand</param-value>
+		</init-param>
+		
 		<!-- delete wedding card -->
 		<init-param>
 			<param-name>delete_cardPage</param-name>
@@ -88,7 +98,7 @@
 		</init-param>
 		
 		<!-- Upload files -->
-		<init-param>
+		<!-- <init-param>
 			<param-name>edit_photosPage</param-name>
 			<param-value>/jsp/manage/editPhotos.jsp</param-value>
 		</init-param>
@@ -100,7 +110,7 @@
 		<init-param>
 			<param-name>upload_photoCommand</param-name>
 			<param-value>com.wqt.web.command.UploadPhotoCommand</param-value>
-		</init-param>
+		</init-param>-->
 		
 		<!-- card area -->
 		<init-param>

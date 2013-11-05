@@ -68,12 +68,13 @@ var onSubmitFeedback = function(cid) {
 		return;
 	}
 	
-	if (!validate_require($('#wish').val())) {
+	/*if (!validate_require($('#wish').val())) {
 		showErrorMessage("请先输入您的祝福。");
 		return;
-	}
+	}*/
 	
-	hideMessage();
+	//hideMessage();
+	showMessage("正在提交签到，请稍候。。。");
 	$.ajax({type: 'POST', 
 		url: 'add_feedback.rmt',
 		data: {cid:cid,

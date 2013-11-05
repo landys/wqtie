@@ -54,18 +54,18 @@
 		           <img src="<%= AppUtils.getAssetSitePrefix() + card.getPagePhotoUrl()%>" class="p_img"></img></div>
 		       <div class="t_nav">
 		           <ul>
-		               <li style="background-color: #cc9966"><p><a href="javascript:void(0);" onclick="divClicked('divFeedback');">我要<br />签到</a></p></li>
 		               <li style="background-color: #ffcccc"><p><a href="javascript:void(0);" onclick="divClicked('divPhotos');">爱的<br />相册</a></p></li>
 		               <li style="background-color: #cccc66"><p><a href="javascript:void(0);" onclick="divClicked('divStory');">爱情<br />故事</a></p></li>
 		               <li style="background-color: #cc99cc"><p><a href="javascript:void(0);" onclick="divClicked('divPlace');">喜宴<br />地图</a></p></li>
+		               <li style="background-color: #cc9966"><p><a href="javascript:void(0);" onclick="divClicked('divFeedback');">我要<br />签到</a></p></li>
 		           </ul>
 		       </div>
 		       
 		       <div id="divFeedback" class="guests_box div_border" style="display:none">
 					<form action="add_feedback.rmt?cid=<%=cardId%>"
 						method="post">
-						<h3 class="h_item" style="margin-bottom:0px">贵宾签到</h3>
-						<p id="fb_message" class="p_error"></p>
+						<h3 class="h_item">贵宾签到</h3>
+
 						<div>
 							<input id="guest" name="guest" type="text"
 								class="scene_txt" placeholder="请输入您的大名">
@@ -93,6 +93,7 @@
 						<div style="margin-top: 10px;">
 							<textarea id="wish" name="wish" class="scene_area" placeholder="送祝福"></textarea>
 						</div>
+						<p id="fb_message" class="p_error"></p>
 						<div style="text-align:center;">
 							<input id="submit" name="submit" type="button" value="确定" class="scene_btn" onclick="onSubmitFeedback(<%=cardId%>);"/>
 						</div>

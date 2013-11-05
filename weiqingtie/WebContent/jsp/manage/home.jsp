@@ -35,17 +35,19 @@ if (nCards > 0) {
 %>
    <table>
    	<tr>
-   		<td><label>请贴标题</label></td>
+   		<td><label>编号</label></td>
+   		<td><label>标题</label></td>
    		<td><label>新郎</label></td>
    		<td><label>新娘</label></td>
    		<td><label>婚期</label></td>
    		<td><label>酒店</label></td>
-   		<td colspan="5"><label>操作</label></td>
+   		<td colspan="6"><label>操作</label></td>
    	</tr>
 <%
 	for (WeddingCard card : cards) {
 %>
    	<tr>
+   		<td><label><%=card.getCardId() %></label></td>
    		<td><label><%=card.getTitle() %></label></td>
    		<td><label><%=card.getGroom() %></label></td>
    		<td><label><%=card.getBride() %></label></td>
@@ -56,6 +58,7 @@ if (nCards > 0) {
    		<td><a href="t3.html?cid=<%=card.getCardId()%>">预览3</a></td>
    		<td><a href="t4.html?cid=<%=card.getCardId()%>">预览4</a></td>
    		<td><a href="edit_card.html?cid=<%=card.getCardId()%>">编辑信息</a></td>
+   		<td><a href="copy_card.html?cid=<%=card.getCardId()%>">复制请帖</a></td>
    		<!-- <td><a href="edit_photos.html?cid=<%=card.getCardId()%>">编辑照片</a></td>-->
    		<!-- <td><a href="#" onclick="onDelete();">删除</a></td>-->
    	</tr>
