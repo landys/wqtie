@@ -28,7 +28,8 @@
 <body title="<%=(card != null ? card.getTitle() : "")%>"
 	icon="<%=card != null ? AppUtils.getAssetSitePrefix() + card.getCoverPhotoUrl() : "" %>"
 	link="<%=(AppUtils.getWebSiteUrl(request) + "t4.html?cid=" + cardId) %>"
-	desc="<%=(card != null ? card.getWeddingDateDesc() : "")%>&nbsp;<%=(card != null ? card.getPlaceAddress() : "")%>"
+	desc="<%=(card != null && card.getGroom() != null ? card.getGroom() : "")%>&#9825;<%=(card != null && card.getGroom() != null ? card.getBride() : "")%>
+<%=(card != null ? card.getWeddingDateDesc() : "")%>"
 	style="background:-webkit-gradient(radial,50% 250,0,50% 250,500, from(#f0a2b2), to(#e4332d)) ;">
 	<div class="t" data-role="page">
 		<div data-role="content">
