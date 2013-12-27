@@ -67,8 +67,11 @@ public class DbSupport {
 	protected void initConnection() throws AppException {
 		String host = "w.rdc.sae.sina.com.cn";
 		String port = "3307";
-		String username = SaeUserInfo.getAccessKey();
-		String password = SaeUserInfo.getSecretKey();
+		//String username = SaeUserInfo.getAccessKey();
+		//String password = SaeUserInfo.getSecretKey();
+		// it seems SaeUserInfo cannot get correct access key and secret key now.
+		String username = "mmk0wy5k2z";
+		String password = "020xy102xjm143z31zx345klhzyjh42kwz350mwk";
 		String driveName = "com.mysql.jdbc.Driver";
 		String dbUrl = "jdbc:mysql://";
 		String serverName = host + ":" + port + "/";
