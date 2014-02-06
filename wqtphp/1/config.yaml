@@ -1,0 +1,6 @@
+name:wqtphp
+version:1
+handle:
+  - rewrite: if(!is_dir() && !is_file() && path~"^(t[0-9]\.html.*)$") goto "index.php/card/$1"
+  - rewrite: if(!is_dir() && !is_file() && path~"^[0-9]\/weiqingtie\/(t[0-9]\.html.*)$") goto "index.php/card/$1"
+  - rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "index.php/$1"

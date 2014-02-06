@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background: #e4322c;
+	background: -moz-linear-gradient(top, #e4322c, #f0a2b2 100%);
+	background:-webkit-gradient(radial,50% 500,0,50% 500,600, from(#f0a2b2), to(#e4332d)) ;
+}
+
+.t_bg {
+    width:304px;
+    height:356px;
+    background-size: 100% 100%;
+}
+
+.t_nav_a li{
+	float:left;
+	margin-right:13px;
+}
+.t_nav_a{
+	margin-left:12px;
+}
+.t_nav_a li a{
+	display:block;
+	width:60px;
+	height:47px;
+	line-height:16px;
+	text-align:center;
+	font-size:14px;
+	padding-top:13px;
+	background-image:url(../images/red_circle.png);
+	background-size:100%;
+}
+.t_nav_a li a:hover{
+	text-decoration:none;
+}
+.t_nav_a .a1{
+	margin-top:274px;
+}
+.t_nav_a .a2{
+	margin-top:259px;
+}
+.t_nav_a .a3{
+	margin-top:246px;
+}
+.t_nav_a .a4{
+	margin-top:231px;
+}

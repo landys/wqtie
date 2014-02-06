@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>微请帖管理</title>
+<link rel="shortcut icon" href="__ASSET_PUBLIC__/images/favicon.ico" />
+</head>
+
+<body>
+	<div id="divUser">
+		<p>
+			欢迎<b>{$user.userName}</b>&nbsp;<a href="/user/logout">退出</a>
+		</p>
+	</div>
+	<div id="divCards">
+		<h2>
+			<a href="edit_card.html">创建新请帖</a>
+		</h2>
+		<h2>请贴列表 ({$nCards})</h2>
+		<if condition="$nCards gt 0">
+		<table>
+			<tr>
+				<td><label>编号</label></td>
+				<td><label>标题</label></td>
+				<td><label>新郎</label></td>
+				<td><label>新娘</label></td>
+				<td><label>婚期</label></td>
+				<td><label>酒店</label></td>
+				<td colspan="6"><label>操作</label></td>
+			</tr>
+			<volist name="cards" id="card">
+			<tr>
+				<td><label>{$card.cardId}</label></td>
+				<td><label>{$card.title}</label></td>
+				<td><label>{$card.groom}</label></td>
+				<td><label>{$card.bride}</label></td>
+				<td><label>{$card.weddingDateDesc}</label></td>
+				<td><label>{$card.placeName}</label></td>
+				<td><a href="/card/view/1/{$card.cardId}.html">预览1</a></td>
+				<td><a href="/card/view/2/{$card.cardId}.html">预览2</a></td>
+				<td><a href="/card/view/3/{$card.cardId}.html">预览3</a></td>
+				<td><a href="/card/view/4/{$card.cardId}.html">预览4</a></td>
+				<td><a href="edit_card/{$card.cardId}.html">编辑信息</a></td>
+				<td><a href="copy_card/{$card.cardId}.html">复制请帖</a></td>
+				<!-- <td><a href="#" onclick="onDelete();">删除</a></td>-->
+			</tr>
+			</volist>
+		</table>
+		</if>
+	</div>
+</body>
+<script type="text/javascript">
+	var onDelete = function() {
+		//delete_card.html?cid=card.getCardId()
+	}
+</script>
+</html>
