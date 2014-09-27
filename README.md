@@ -4,16 +4,20 @@
 
 提供四个模板如下，微信扫二维码访问更佳。
 
-Tempate 1: [http://vqingtie.com/card/view/1/16.html](http://vqingtie.com/card/view/1/16.html)
+[Tempate 1](http://vqingtie.com/card/view/1/16.html)
+
 ![tempate 1][img_qr_t1]
 
-Tempate 2: [http://vqingtie.com/card/view/2/19.html](http://vqingtie.com/card/view/2/19.html)
+[Tempate 2](http://vqingtie.com/card/view/2/19.html)
+
 ![tempate 2][img_qr_t2]
 
-Tempate 3: # [http://vqingtie.com/card/view/3/16.html](http://vqingtie.com/card/view/3/16.html) #
+[Tempate 3](http://vqingtie.com/card/view/3/16.html)
+
 ![tempate 3][img_qr_t3]
 
-Tempate 4: [http://vqingtie.com/card/view/4/16.html](http://vqingtie.com/card/view/4/16.html)
+[Tempate 4](http://vqingtie.com/card/view/4/16.html)
+
 ![tempate 4][img_qr_t4]
 
 目录结构：
